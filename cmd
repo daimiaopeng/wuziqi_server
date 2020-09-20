@@ -1,0 +1,1 @@
+protoc ./mess.proto --python_out=./

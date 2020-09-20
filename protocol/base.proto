@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+message cmd {
+   int32 c = 1;
+}
+
+message client_gobang_position{
+    int32 cmd = 1;
+    int32 x = 2;
+    int32 y = 3;
+}
+
+message server_gobang_position{
+    int32 cmd = 1;
+    int32 x = 2;
+    int32 y = 3;
+}
+
+message client_login{
+    int32 cmd = 1;
+    string username = 2;
+    string passwd = 3;
+}
+
+message server_login{
+    int32 cmd = 1;
+    string token = 2;
+}
+
+message test{
+    int32 cmd = 1;
+    string inform = 2;
+}
