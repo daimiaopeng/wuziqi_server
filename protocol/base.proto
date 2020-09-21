@@ -25,7 +25,22 @@ message client_login{
 message server_login{
     int32 cmd = 1;
     string token = 2;
+    string message = 3;
 }
+
+message client_register{
+    int32 cmd = 1;
+    string username = 2;
+    string passwd = 3;
+}
+
+message server_register{
+    int32 cmd = 1;
+    int32 isSuccess = 2;
+    string message = 3;
+}
+
+
 
 message test{
     int32 cmd = 1;

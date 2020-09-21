@@ -1,10 +1,6 @@
 #include "Server.h"
-#include "glog/logging.h"
-
-
-class Session;
-
-class Server;
+#include "Redis.h"
+#include "Session.h"
 
 void initLog() {
     google::InitGoogleLogging("serverLog");    //初始化log的名字为daqing
@@ -23,8 +19,9 @@ int main(int argc, char *argv[]) {
     initLog();
 
     boost::asio::io_context ioContext;
+    Redis redis("127.0.0.1", 6379);
 
-    Server server(ioContext, std::atoi("9123"));
+    Server server(ioContext, std::atoi("9123"), redis);
 
 //    std::thread ioThread([&]() { ioContext.run(); });
 //    ioThread.detach();

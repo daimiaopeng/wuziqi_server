@@ -12,7 +12,7 @@ link_directories('/usr/local/protobuf/lib')
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIR})
 
-add_executable(wuziqi_server main.cpp Session.cpp Session.h protocol/Message.h Server.cpp Server.h protocol/base.pb.cc protocol/base.pb.h Process.cpp Process.h)
+add_executable(wuziqi_server main.cpp Session.cpp Session.h protocol/Message.h Server.cpp Server.h protocol/base.pb.cc protocol/base.pb.h Process.cpp Process.h Redis.cpp Redis.h)
 
 
-target_link_libraries(wuziqi_server pthread boost_system boost_thread boost_coroutine boost_date_time protoc protobuf protobuf-lite glog)
+target_link_libraries(wuziqi_server pthread boost_system boost_thread boost_coroutine boost_date_time protoc protobuf protobuf-lite glog hiredis)
