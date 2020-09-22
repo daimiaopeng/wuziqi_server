@@ -18,13 +18,19 @@ typedef boost::shared_ptr<tcp::socket> socket_ptr;
 
 class Process;
 
-class Session : public std::enable_shared_from_this<Session> {
+class Server;
+
+class Session : public enable_shared_from_this<Session> {
 public:
-    Session(tcp::socket socket, Redis &redis) : _socket(std::move(socket)), _redis(redis) {}
+    Session(tcp::socket socket, shared_ptr<Server> server) : _socket(std::move(socket)), _server(server) {}
 
     void start() {
+        isColse = false;
+        _username = "None";
         do_read_header();
     }
+
+    ~Session();
 
 private:
     void do_read_header() {
@@ -34,10 +40,9 @@ private:
                                     if (!ec) {
                                         LOG(INFO) << " header.len:" << header.len;
                                         do_read_body(header.len);
-//                                      do_write(len);
                                     } else {
-                                        _socket.close();
-                                        LOG(INFO) << "_socket.close() do_read_header ec: " << ec;
+                                        close();
+                                        LOG(INFO) << "close() do_read_header ec: " << ec;
                                     }
                                 });
     }
@@ -51,11 +56,21 @@ public:
                                  [this, self](boost::system::error_code ec, std::size_t len) {
                                      if (!ec) {
                                          LOG(INFO) << "do_write 发送成功";
+                                     } else {
+                                         close();
+                                         LOG(INFO) << "close() writeData ec: " << ec;
                                      }
                                  });
     }
 
-    Redis &_redis;
+    void close();
+
+public:
+    string withusername;
+    bool isColse;
+    string gameId;
+    shared_ptr<Server> _server;
+    string _username;
     tcp::socket _socket;
     struct message header;
     static const int MESSAGE_SIZE = sizeof(message);

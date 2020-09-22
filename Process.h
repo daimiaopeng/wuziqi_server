@@ -6,18 +6,17 @@
 #define WUZIQI_SERVER_PROCESS_H
 
 #include <memory>
+#include <mutex>
 #include "protocol/Message.h"
 #include "Session.h"
 #include "Redis.h"
+#include "Server.h"
 
 using namespace std;
 
-
 class Process {
 public:
-    Process(shared_ptr<Session> session, shared_ptr<char[]> buff, int len, Redis &redis) : _session(session),
-                                                                                           _buff(buff), _len(len),
-                                                                                           _redis(redis) {
+    Process(shared_ptr<Session> session, shared_ptr<char[]> buff, int len) : _session(session), _buff(buff), _len(len) {
         cmd c;
         c.ParseFromArray(buff.get(), len);
         LOG(INFO) << "cmd:" << c.c();
@@ -31,6 +30,15 @@ public:
             case 4:
                 cmd4();
                 break;
+            case 6:
+                cmd6();
+                break;
+            case 8:
+                cmd8();
+                break;
+            case 11:
+                cmd11();
+                break;
             default:
                 LOG(INFO) << "cmd default";
         }
@@ -40,7 +48,6 @@ public:
 private:
     shared_ptr<Session> _session;
     shared_ptr<char[]> _buff;
-    Redis &_redis;
     int _len;
 
 private:
@@ -50,6 +57,11 @@ private:
 
     void cmd4();
 
+    void cmd6();
+
+    void cmd8();
+
+    void cmd11();
 };
 
 

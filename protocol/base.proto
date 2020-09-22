@@ -40,7 +40,30 @@ message server_register{
     string message = 3;
 }
 
+message client_create_game{
+    int32 cmd = 1;
+    string withUsername = 2;
+}
 
+message server_online_infor{
+    int32 cmd = 1;
+    repeated string people = 2;
+}
+
+message server_game_invite{
+    int32 cmd = 1;
+    string people = 2;
+}
+
+message client_game_invite{
+    int32 cmd = 1;
+    int32 code = 2;
+}
+
+message server_game_isInvite{
+    int32 cmd = 1;
+    int32 code = 2;
+}
 
 message test{
     int32 cmd = 1;

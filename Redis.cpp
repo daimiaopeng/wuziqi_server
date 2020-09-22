@@ -88,7 +88,7 @@ void Redis::setName(int fd, const string &name) {
 }
 
 string Redis::login(const string &name, const string &passwd, string &message) {
-    auto reply = redisReply_ptr(redisCommand(conn, "HMGET login %s", name.c_str()));
+    auto reply = redisReply_ptr(redisCommand(conn, "HMGET user %s", name.c_str()));
     auto element = reply->element;
     if ((*element)->str == nullptr) {
         message = "该用户没有注册";
@@ -99,7 +99,14 @@ string Redis::login(const string &name, const string &passwd, string &message) {
     if (passwd == str) {
         message = "登录成功";
         LOG(INFO) << name + message;
-        string token = name;
+        boost::posix_time::ptime now = boost::posix_time::microsec_clock::local_time();
+        const boost::posix_time::time_duration td = now.time_of_day();
+        int hh = td.hours();
+        int mm = td.minutes();
+        int ss = td.seconds();
+        int ms = td.total_milliseconds() - ((hh * 3600 + mm * 60 + ss) * 1000);
+        MD5 m(to_string(ms) + name + passwd);
+        string token = m.toStr();
         setToken(token, name);
         return token;
     } else {
@@ -110,14 +117,14 @@ string Redis::login(const string &name, const string &passwd, string &message) {
 }
 
 bool Redis::registered(const string &name, const string &passwd, string &message) {
-    auto reply = redisReply_ptr(redisCommand(conn, "HMGET login %s", name.c_str()));
+    auto reply = redisReply_ptr(redisCommand(conn, "HMGET user %s", name.c_str()));
     auto element = reply->element;
     if ((*element)->str != nullptr) {
         message = "该用户已注册";
         LOG(INFO) << name + message;
         return false;
     }
-    redisCommand(conn, "HMSET login %s %s", name.c_str(), passwd.c_str());
+    redisCommand(conn, "HMSET user %s %s", name.c_str(), passwd.c_str());
     message = "注册成功";
     LOG(INFO) << name + message;
     return true;
@@ -140,7 +147,7 @@ int Redis::getRegisterNums() {
     return reply->integer;
 }
 
-set<string> Redis::geOnile() {
+set<string> Redis::getOnile() {
     set<string> all;
     auto reply = redisReply_ptr(redisCommand(conn, "HGETALL token"));
     auto element = reply->element;

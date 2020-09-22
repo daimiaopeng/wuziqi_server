@@ -7,11 +7,13 @@
 
 
 #include <hiredis/hiredis.h>
-#include "glog/logging.h"
 #include <iostream>
 #include <boost/regex.hpp>
 #include <memory>
 #include <set>
+#include <glog/logging.h>
+#include <boost/date_time/posix_time/posix_time.hpp>
+#include "tool/md5.h"
 
 using namespace std;
 
@@ -40,7 +42,7 @@ public:
 
     void delName(int fd);
 
-    set<string> geOnile();
+    set<string> getOnile();
 
     redisContext *getConn() { return conn; };
 

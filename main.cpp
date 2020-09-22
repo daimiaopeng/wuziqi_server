@@ -1,7 +1,9 @@
+#include <memory>
 #include "Server.h"
 #include "Redis.h"
 #include "Session.h"
 
+using namespace std;
 void initLog() {
     google::InitGoogleLogging("serverLog");    //初始化log的名字为daqing
 //    google::SetLogDestination(google::GLOG_INFO, "../log/");    //设置输出日志的文件夹，文件夹必须已经存在
@@ -20,9 +22,8 @@ int main(int argc, char *argv[]) {
 
     boost::asio::io_context ioContext;
     Redis redis("127.0.0.1", 6379);
-
-    Server server(ioContext, std::atoi("9123"), redis);
-
+    auto server(make_shared<Server>(ioContext, std::atoi("9123"), redis));
+    server->run();
 //    std::thread ioThread([&]() { ioContext.run(); });
 //    ioThread.detach();
 //    while (1) {

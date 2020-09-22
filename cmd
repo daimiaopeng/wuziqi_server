@@ -1,1 +1,1 @@
-protoc ./mess.proto --python_out=./
+protoc ./base.proto --python_out=./
