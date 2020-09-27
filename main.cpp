@@ -4,6 +4,7 @@
 #include "Session.h"
 
 using namespace std;
+
 void initLog() {
     google::InitGoogleLogging("serverLog");    //初始化log的名字为daqing
 //    google::SetLogDestination(google::GLOG_INFO, "../log/");    //设置输出日志的文件夹，文件夹必须已经存在

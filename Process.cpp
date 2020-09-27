@@ -4,6 +4,38 @@
 
 #include "Process.h"
 
+void Process::resolve() {
+    cmd c;
+    c.ParseFromArray(_buff.get(), _len);
+    LOG(INFO) << "cmd:" << c.c();
+    switch (c.c()) {
+        case 0:
+            cmd0();
+            break;
+        case 2:
+            cmd2();
+            break;
+        case 4:
+            cmd4();
+            break;
+        case 6:
+            cmd6();
+            break;
+        case 8:
+            cmd8();
+            break;
+        case 11:
+            cmd11();
+            break;
+        case 13:
+            cmd13();
+            break;
+        default:
+            LOG(INFO) << "cmd default";
+    }
+}
+
+
 void Process::cmd0() {
     test t;
     t.ParseFromArray(_buff.get(), _len);
@@ -19,6 +51,7 @@ void Process::cmd2() {
     string token = _session->_server->_redis.login(username, passwd, message);
     if (token != "") {
         _session->_username = username;
+        _session->token = token;
     }
     server_login s_l;
     s_l.set_cmd(3);
@@ -52,7 +85,7 @@ void Process::cmd6() {
     s_g_p.set_x(x);
     s_g_p.set_y(y);
     for (auto &s:_session->_server->_cilentMap) {
-        if (_session->withusername == s.first->_username) {
+        if (_session->_withusername == s.first->_username) {
             s.first->writeData(s_g_p.SerializeAsString());
             break;
         }
@@ -62,10 +95,10 @@ void Process::cmd6() {
 void Process::cmd8() {
     client_create_game c_c_g;
     c_c_g.ParseFromArray(_buff.get(), _len);
-    _session->withusername = c_c_g.withusername();
+    _session->_withusername = c_c_g.withusername();
     lock_guard<mutex> lock(_session->_server->_mutex);
     for (auto &s:_session->_server->_cilentMap) {
-        if (s.first->_username == _session->withusername) {
+        if (s.first->_username == _session->_withusername) {
             server_game_invite s_g_i;
             s_g_i.set_cmd(10);
             LOG(INFO) << "set_cmd ";
@@ -84,10 +117,19 @@ void Process::cmd11() {
     s_g_isInvite.set_cmd(12);
     lock_guard<mutex> lock(_session->_server->_mutex);
     for (auto &s:_session->_server->_cilentMap) {
-        if (_session->_username == s.first->withusername) {
-            _session->withusername = s.first->_username;
+        if (_session->_username == s.first->_withusername) {
+            _session->_withusername = s.first->_username;
             s_g_isInvite.set_code(code);
             s.first->writeData(s_g_isInvite.SerializeAsString());
+            break;
+        }
+    }
+}
+
+void Process::cmd13() {
+    for (auto &s:_session->_server->_cilentMap) {
+        if (_session->_username == s.first->_withusername) {
+            s.first->writeData(string(_buff.get(), _len));
             break;
         }
     }

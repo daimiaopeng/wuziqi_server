@@ -16,34 +16,10 @@ using namespace std;
 
 class Process {
 public:
-    Process(shared_ptr<Session> session, shared_ptr<char[]> buff, int len) : _session(session), _buff(buff), _len(len) {
-        cmd c;
-        c.ParseFromArray(buff.get(), len);
-        LOG(INFO) << "cmd:" << c.c();
-        switch (c.c()) {
-            case 0:
-                cmd0();
-                break;
-            case 2:
-                cmd2();
-                break;
-            case 4:
-                cmd4();
-                break;
-            case 6:
-                cmd6();
-                break;
-            case 8:
-                cmd8();
-                break;
-            case 11:
-                cmd11();
-                break;
-            default:
-                LOG(INFO) << "cmd default";
-        }
-    }
+    Process(shared_ptr<Session> session, shared_ptr<char[]> buff, int len) : _session(session), _buff(buff),
+                                                                             _len(len) {}
 
+    void resolve();
 
 private:
     shared_ptr<Session> _session;
@@ -62,6 +38,8 @@ private:
     void cmd8();
 
     void cmd11();
+
+    void cmd13();
 };
 
 

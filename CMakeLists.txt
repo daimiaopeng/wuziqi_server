@@ -3,8 +3,16 @@ project(wuziqi_server)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(Boost_INCLUDE_DIR /usr/local/include/boost)
-set(Boost_LIBRARY_DIR /usr/local/lib)
+IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+    set(Boost_INCLUDE_DIR /usr/local/include/boost)
+    set(Boost_LIBRARY_DIR /usr/local/lib)
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+    set(Boost_INCLUDE_DIR "D:\\PATH\\boost_1_70_0")
+    set(Boost_LIBRARY_DIR "D:\\PATH\\boost_1_70_0\\lib64-msvc-14.2")
+ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+
+#set(CMAKE_CXX_FLAGS "--coverage")
+
 include_directories('/usr/local/protobuf/include')
 link_directories('/usr/local/protobuf/lib')
 

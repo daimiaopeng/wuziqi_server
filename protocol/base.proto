@@ -69,3 +69,10 @@ message test{
     int32 cmd = 1;
     string inform = 2;
 }
+
+message chatMessage{
+    int32 cmd = 1;
+    string data = 2;
+    string time = 3;
+    int32 type = 4;
+}
