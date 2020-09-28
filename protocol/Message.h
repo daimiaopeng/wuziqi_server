@@ -6,7 +6,7 @@
 
 
 struct message {
-    int len;
+    u_int len;
     char data[0];
 };
 

@@ -49,9 +49,11 @@ void Process::cmd2() {
     string passwd = c_l.passwd();
     string message;
     string token = _session->_server->_redis.login(username, passwd, message);
-    if (token != "") {
+    if (!token.empty()) {
         _session->_username = username;
         _session->token = token;
+        lock_guard<mutex> lock(_session->_server->_mutex);
+        _session->_server->_cilentMap[username] = _session;
     }
     server_login s_l;
     s_l.set_cmd(3);
@@ -79,34 +81,22 @@ void Process::cmd6() {
     c_g_p.ParseFromArray(_buff.get(), _len);
     int x = c_g_p.x();
     int y = c_g_p.y();
-
     server_gobang_position s_g_p;
     s_g_p.set_cmd(7);
     s_g_p.set_x(x);
     s_g_p.set_y(y);
-    for (auto &s:_session->_server->_cilentMap) {
-        if (_session->_withusername == s.first->_username) {
-            s.first->writeData(s_g_p.SerializeAsString());
-            break;
-        }
-    }
+    sendOne(_session->_withusername, s_g_p.SerializeAsString());
 }
 
 void Process::cmd8() {
     client_create_game c_c_g;
     c_c_g.ParseFromArray(_buff.get(), _len);
     _session->_withusername = c_c_g.withusername();
-    lock_guard<mutex> lock(_session->_server->_mutex);
-    for (auto &s:_session->_server->_cilentMap) {
-        if (s.first->_username == _session->_withusername) {
-            server_game_invite s_g_i;
-            s_g_i.set_cmd(10);
-            LOG(INFO) << "set_cmd ";
-            s_g_i.set_people(_session->_username);
-            s.first->writeData(s_g_i.SerializeAsString());
-            break;
-        }
-    }
+    server_game_invite s_g_i;
+    s_g_i.set_cmd(10);
+    LOG(INFO) << _session->_withusername;
+    s_g_i.set_people(_session->_username);
+    sendOne(_session->_withusername, s_g_i.SerializeAsString());
 }
 
 void Process::cmd11() {
@@ -117,20 +107,24 @@ void Process::cmd11() {
     s_g_isInvite.set_cmd(12);
     lock_guard<mutex> lock(_session->_server->_mutex);
     for (auto &s:_session->_server->_cilentMap) {
-        if (_session->_username == s.first->_withusername) {
-            _session->_withusername = s.first->_username;
+        if (_session->_username == s.second->_withusername) {
+            _session->_withusername = s.second->_username;
             s_g_isInvite.set_code(code);
-            s.first->writeData(s_g_isInvite.SerializeAsString());
+            s.second->writeData(s_g_isInvite.SerializeAsString());
             break;
         }
     }
 }
 
 void Process::cmd13() {
-    for (auto &s:_session->_server->_cilentMap) {
-        if (_session->_username == s.first->_withusername) {
-            s.first->writeData(string(_buff.get(), _len));
-            break;
-        }
+    sendOne(_session->_withusername, string(_buff.get(), _len));
+}
+
+void Process::sendOne(const string &name, const string &data) {
+    lock_guard<mutex> lock(_session->_server->_mutex);
+    auto res = _session->_server->_cilentMap.find(name);
+    if (res == _session->_server->_cilentMap.end()) {
+        return;
     }
+    res->second->writeData(data);
 }

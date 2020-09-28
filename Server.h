@@ -42,11 +42,11 @@ private:
 
     void manageClient();
 
-    void sendOnlineAll(list<string> &onlinePeople);
+    void sendOnlineAll();
 
 public:
     mutex _mutex;
-    map<shared_ptr<Session>, string> _cilentMap;
+    map<string, shared_ptr<Session>> _cilentMap;
     Redis &_redis;
     boost::asio::io_context &_ioContext;
     tcp::acceptor _acceptor;

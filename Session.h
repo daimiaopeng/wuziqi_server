@@ -43,7 +43,7 @@ private:
     void do_read_body(int dataLen);
 
 public:
-    void writeData(string &&data);
+    void writeData(string data);
 
     void close();
 
