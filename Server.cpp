@@ -17,7 +17,7 @@ void Server::do_accept() {
 }
 
 void Server::manageClient() {
-    LOG(INFO) << "manageClient";
+    LOG(INFO) << "manageClient线程运行中";
     thread t([this]() {
         while (1) {
             {

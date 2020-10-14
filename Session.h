@@ -27,7 +27,7 @@ class Server;
 
 class Session : public enable_shared_from_this<Session> {
 public:
-    Session(tcp::socket socket, shared_ptr<Server> server) : _socket(std::move(socket)), _server(server) {}
+    Session(tcp::socket socket, shared_ptr<Server> server) : _socket(std::move(socket)), _server(server) {};
 
     void start() {
         isColse = false;
@@ -47,11 +47,11 @@ public:
 
     void close();
 
+    void sendUserInfor();
 public:
     string _withusername;
     bool isColse;
     string gameId;
-    string token;
     shared_ptr<Server> _server;
     string _username;
     tcp::socket _socket;

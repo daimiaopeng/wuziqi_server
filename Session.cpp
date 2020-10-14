@@ -63,3 +63,20 @@ Session::~Session() {
 
     LOG(INFO) << "客户端关闭";
 }
+
+void Session::sendUserInfor() {
+    server_user_infor s_u_i;
+    auto res = _server->database._storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == _username));
+    if (res.empty()) return;
+    s_u_i.set_cmd(14);
+    s_u_i.set_name(res[0].name);
+    s_u_i.set_lose(res[0].lose);
+    s_u_i.set_level(res[0].level);
+    s_u_i.set_draw(res[0].draw);
+    s_u_i.set_avatar(res[0].avatar);
+    s_u_i.set_win(res[0].win);
+    s_u_i.set_integral(res[0].integral);
+    s_u_i.set_gamecurrency(res[0].gameCurrency);
+    s_u_i.set_numsgame(res[0].numsGame);
+    writeData(s_u_i.SerializeAsString());
+}

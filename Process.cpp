@@ -35,47 +35,55 @@ void Process::resolve() {
     }
 }
 
-
+// 测试
 void Process::cmd0() {
     test t;
     t.ParseFromArray(_buff.get(), _len);
     LOG(INFO) << "cmd 0 string:" << t.inform();
 }
 
+//登录
 void Process::cmd2() {
     client_login c_l;
     c_l.ParseFromArray(_buff.get(), _len);
     string username = c_l.username();
     string passwd = c_l.passwd();
     string message;
-    string token = _session->_server->_redis.login(username, passwd, message);
-    if (!token.empty()) {
+    bool code = _session->_server->database.login(username, passwd, message);
+    if (code) {
         _session->_username = username;
-        _session->token = token;
         lock_guard<mutex> lock(_session->_server->_mutex);
         _session->_server->_cilentMap[username] = _session;
     }
     server_login s_l;
     s_l.set_cmd(3);
-    s_l.set_token(token);
+    s_l.set_issuccess(code);
     s_l.set_message(message);
     _session->writeData(s_l.SerializeAsString());
+    if (code) {
+        _session->sendUserInfor();
+    }
 }
 
+//注册
 void Process::cmd4() {
     client_register c_r;
     c_r.ParseFromArray(_buff.get(), _len);
     string username = c_r.username();
     string passwd = c_r.passwd();
     string message;
-    bool isSuccess = _session->_server->_redis.registered(username, passwd, message);
+    bool isSuccess = _session->_server->database.registered(username, passwd, message);
     server_register s_r;
     s_r.set_cmd(5);
     s_r.set_issuccess(isSuccess);
     s_r.set_message(message);
     _session->writeData(s_r.SerializeAsString());
+    if (isSuccess) {
+        _session->_server->database.initUserGameInfor(username);
+    }
 }
 
+// 发送棋的位置
 void Process::cmd6() {
     client_gobang_position c_g_p;
     c_g_p.ParseFromArray(_buff.get(), _len);
@@ -88,6 +96,7 @@ void Process::cmd6() {
     sendOne(_session->_withusername, s_g_p.SerializeAsString());
 }
 
+// 发送对战请求
 void Process::cmd8() {
     client_create_game c_c_g;
     c_c_g.ParseFromArray(_buff.get(), _len);
@@ -99,6 +108,7 @@ void Process::cmd8() {
     sendOne(_session->_withusername, s_g_i.SerializeAsString());
 }
 
+//是否接受玩家游戏邀请(回复)
 void Process::cmd11() {
     client_game_invite c_g_i;
     c_g_i.ParseFromArray(_buff.get(), _len);
@@ -116,6 +126,7 @@ void Process::cmd11() {
     }
 }
 
+// 聊天消息
 void Process::cmd13() {
     sendOne(_session->_withusername, string(_buff.get(), _len));
 }

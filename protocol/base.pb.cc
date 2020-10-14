@@ -84,6 +84,10 @@ public:
     ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<chatMessage> _instance;
 } _chatMessage_default_instance_;
 
+class server_user_inforDefaultTypeInternal {
+public:
+    ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<server_user_infor> _instance;
+} _server_user_infor_default_instance_;
 static void InitDefaultsscc_info_chatMessage_base_2eproto() {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -292,6 +296,22 @@ static void InitDefaultsscc_info_server_register_base_2eproto() {
                   ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_server_register_base_2eproto},
          {}};
 
+static void InitDefaultsscc_info_server_user_infor_base_2eproto() {
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+    {
+        void *ptr = &::_server_user_infor_default_instance_;
+        new(ptr) ::server_user_infor();
+        ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+    }
+    ::server_user_infor::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_server_user_infor_base_2eproto =
+        {{ATOMIC_VAR_INIT(
+                  ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_server_user_infor_base_2eproto},
+         {}};
+
 static void InitDefaultsscc_info_test_base_2eproto() {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -308,7 +328,7 @@ static void InitDefaultsscc_info_test_base_2eproto() {
                   ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_test_base_2eproto},
          {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_base_2eproto[14];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_base_2eproto[15];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const **file_level_enum_descriptors_base_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const **file_level_service_descriptors_base_2eproto = nullptr;
 
@@ -349,7 +369,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_base_2eproto::offsets[] PROTOB
         ~0u,  // no _oneof_case_
         ~0u,  // no _weak_field_map_
         PROTOBUF_FIELD_OFFSET(::server_login, cmd_),
-        PROTOBUF_FIELD_OFFSET(::server_login, token_),
+        PROTOBUF_FIELD_OFFSET(::server_login, issuccess_),
         PROTOBUF_FIELD_OFFSET(::server_login, message_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::client_register, _internal_metadata_),
@@ -418,22 +438,38 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_base_2eproto::offsets[] PROTOB
         PROTOBUF_FIELD_OFFSET(::chatMessage, data_),
         PROTOBUF_FIELD_OFFSET(::chatMessage, time_),
         PROTOBUF_FIELD_OFFSET(::chatMessage, type_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, cmd_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, name_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, integral_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, level_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, numsgame_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, win_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, lose_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, draw_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, gamecurrency_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, avatar_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0,  -1, sizeof(::cmd)},
-        {6,  -1, sizeof(::client_gobang_position)},
-        {14, -1, sizeof(::server_gobang_position)},
-        {22, -1, sizeof(::client_login)},
-        {30, -1, sizeof(::server_login)},
-        {38, -1, sizeof(::client_register)},
-        {46, -1, sizeof(::server_register)},
-        {54, -1, sizeof(::client_create_game)},
-        {61, -1, sizeof(::server_online_infor)},
-        {68, -1, sizeof(::server_game_invite)},
-        {75, -1, sizeof(::client_game_invite)},
-        {82, -1, sizeof(::server_game_isInvite)},
-        {89, -1, sizeof(::test)},
-        {96, -1, sizeof(::chatMessage)},
+        {0,   -1, sizeof(::cmd)},
+        {6,   -1, sizeof(::client_gobang_position)},
+        {14,  -1, sizeof(::server_gobang_position)},
+        {22,  -1, sizeof(::client_login)},
+        {30,  -1, sizeof(::server_login)},
+        {38,  -1, sizeof(::client_register)},
+        {46,  -1, sizeof(::server_register)},
+        {54,  -1, sizeof(::client_create_game)},
+        {61,  -1, sizeof(::server_online_infor)},
+        {68,  -1, sizeof(::server_game_invite)},
+        {75,  -1, sizeof(::client_game_invite)},
+        {82,  -1, sizeof(::server_game_isInvite)},
+        {89,  -1, sizeof(::test)},
+        {96,  -1, sizeof(::chatMessage)},
+        {105, -1, sizeof(::server_user_infor)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const *const file_default_instances[] = {
@@ -451,6 +487,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const *const file_default_instances[] = 
         reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(&::_server_game_isInvite_default_instance_),
         reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(&::_test_default_instance_),
         reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(&::_chatMessage_default_instance_),
+        reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(&::_server_user_infor_default_instance_),
 };
 
 const char descriptor_table_protodef_base_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -459,24 +496,29 @@ const char descriptor_table_protodef_base_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
         "\022\t\n\001y\030\003 \001(\005\";\n\026server_gobang_position\022\013\n"
         "\003cmd\030\001 \001(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\"=\n\014clie"
         "nt_login\022\013\n\003cmd\030\001 \001(\005\022\020\n\010username\030\002 \001(\t\022"
-        "\016\n\006passwd\030\003 \001(\t\";\n\014server_login\022\013\n\003cmd\030\001"
-        " \001(\005\022\r\n\005token\030\002 \001(\t\022\017\n\007message\030\003 \001(\t\"@\n\017"
-        "client_register\022\013\n\003cmd\030\001 \001(\005\022\020\n\010username"
-        "\030\002 \001(\t\022\016\n\006passwd\030\003 \001(\t\"B\n\017server_registe"
-        "r\022\013\n\003cmd\030\001 \001(\005\022\021\n\tisSuccess\030\002 \001(\005\022\017\n\007mes"
-        "sage\030\003 \001(\t\"7\n\022client_create_game\022\013\n\003cmd\030"
-        "\001 \001(\005\022\024\n\014withUsername\030\002 \001(\t\"2\n\023server_on"
-        "line_infor\022\013\n\003cmd\030\001 \001(\005\022\016\n\006people\030\002 \003(\t\""
-        "1\n\022server_game_invite\022\013\n\003cmd\030\001 \001(\005\022\016\n\006pe"
-        "ople\030\002 \001(\t\"/\n\022client_game_invite\022\013\n\003cmd\030"
-        "\001 \001(\005\022\014\n\004code\030\002 \001(\005\"1\n\024server_game_isInv"
-        "ite\022\013\n\003cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\"#\n\004test\022\013"
-        "\n\003cmd\030\001 \001(\005\022\016\n\006inform\030\002 \001(\t\"D\n\013chatMessa"
-        "ge\022\013\n\003cmd\030\001 \001(\005\022\014\n\004data\030\002 \001(\t\022\014\n\004time\030\003 "
-        "\001(\t\022\014\n\004type\030\004 \001(\005b\006proto3";
+        "\016\n\006passwd\030\003 \001(\t\"\?\n\014server_login\022\013\n\003cmd\030\001"
+        " \001(\005\022\021\n\tisSuccess\030\002 \001(\005\022\017\n\007message\030\003 \001(\t"
+        "\"@\n\017client_register\022\013\n\003cmd\030\001 \001(\005\022\020\n\010user"
+        "name\030\002 \001(\t\022\016\n\006passwd\030\003 \001(\t\"B\n\017server_reg"
+        "ister\022\013\n\003cmd\030\001 \001(\005\022\021\n\tisSuccess\030\002 \001(\005\022\017\n"
+        "\007message\030\003 \001(\t\"7\n\022client_create_game\022\013\n\003"
+        "cmd\030\001 \001(\005\022\024\n\014withUsername\030\002 \001(\t\"2\n\023serve"
+        "r_online_infor\022\013\n\003cmd\030\001 \001(\005\022\016\n\006people\030\002 "
+        "\003(\t\"1\n\022server_game_invite\022\013\n\003cmd\030\001 \001(\005\022\016"
+        "\n\006people\030\002 \001(\t\"/\n\022client_game_invite\022\013\n\003"
+        "cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\"1\n\024server_game_i"
+        "sInvite\022\013\n\003cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\"#\n\004te"
+        "st\022\013\n\003cmd\030\001 \001(\005\022\016\n\006inform\030\002 \001(\t\"D\n\013chatM"
+        "essage\022\013\n\003cmd\030\001 \001(\005\022\014\n\004data\030\002 \001(\t\022\014\n\004tim"
+        "e\030\003 \001(\t\022\014\n\004type\030\004 \001(\005\"\260\001\n\021server_user_in"
+        "for\022\013\n\003cmd\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010integr"
+        "al\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\022\020\n\010numsGame\030\005 \001("
+        "\005\022\013\n\003win\030\006 \001(\005\022\014\n\004lose\030\007 \001(\005\022\014\n\004draw\030\010 \001"
+        "(\005\022\024\n\014gameCurrency\030\t \001(\005\022\016\n\006avatar\030\n \001(\014"
+        "b\006proto3";
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable *const descriptor_table_base_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_base_2eproto_sccs[14] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_base_2eproto_sccs[15] = {
         &scc_info_chatMessage_base_2eproto.base,
         &scc_info_client_create_game_base_2eproto.base,
         &scc_info_client_game_invite_base_2eproto.base,
@@ -490,15 +532,16 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_ba
         &scc_info_server_login_base_2eproto.base,
         &scc_info_server_online_infor_base_2eproto.base,
         &scc_info_server_register_base_2eproto.base,
+        &scc_info_server_user_infor_base_2eproto.base,
         &scc_info_test_base_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_base_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_base_2eproto = {
-        false, false, descriptor_table_protodef_base_2eproto, "base.proto", 785,
-        &descriptor_table_base_2eproto_once, descriptor_table_base_2eproto_sccs, descriptor_table_base_2eproto_deps, 14,
+        false, false, descriptor_table_protodef_base_2eproto, "base.proto", 968,
+        &descriptor_table_base_2eproto_once, descriptor_table_base_2eproto_sccs, descriptor_table_base_2eproto_deps, 15,
         0,
         schemas, file_default_instances, TableStruct_base_2eproto::offsets,
-        file_level_metadata_base_2eproto, 14, file_level_enum_descriptors_base_2eproto,
+        file_level_metadata_base_2eproto, 15, file_level_enum_descriptors_base_2eproto,
         file_level_service_descriptors_base_2eproto,
 };
 
@@ -1534,25 +1577,23 @@ server_login::server_login(::PROTOBUF_NAMESPACE_ID::Arena *arena)
 server_login::server_login(const server_login &from)
         : ::PROTOBUF_NAMESPACE_ID::Message() {
     _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-    token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-    if (!from._internal_token().empty()) {
-        token_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_token(),
-                   GetArena());
-    }
     message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
     if (!from._internal_message().empty()) {
         message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_message(),
                      GetArena());
     }
-    cmd_ = from.cmd_;
+    ::memcpy(&cmd_, &from.cmd_,
+             static_cast<size_t>(reinterpret_cast<char *>(&issuccess_) -
+                                 reinterpret_cast<char *>(&cmd_)) + sizeof(issuccess_));
     // @@protoc_insertion_point(copy_constructor:server_login)
 }
 
 void server_login::SharedCtor() {
     ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_server_login_base_2eproto.base);
-    token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
     message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-    cmd_ = 0;
+    ::memset(&cmd_, 0, static_cast<size_t>(
+                               reinterpret_cast<char *>(&issuccess_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(issuccess_));
 }
 
 server_login::~server_login() {
@@ -1563,7 +1604,6 @@ server_login::~server_login() {
 
 void server_login::SharedDtor() {
             GOOGLE_DCHECK(GetArena() == nullptr);
-    token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
     message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -1591,9 +1631,10 @@ void server_login::Clear() {
     // Prevent compiler warnings about cached_has_bits being unused
     (void) cached_has_bits;
 
-    token_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     message_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-    cmd_ = 0;
+    ::memset(&cmd_, 0, static_cast<size_t>(
+                               reinterpret_cast<char *>(&issuccess_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(issuccess_));
     _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1613,12 +1654,10 @@ const char *server_login::_InternalParse(const char *ptr, ::PROTOBUF_NAMESPACE_I
                     CHK_(ptr);
                 } else goto handle_unusual;
                 continue;
-                // string token = 2;
+                // int32 isSuccess = 2;
             case 2:
-                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-                    auto str = _internal_mutable_token();
-                    ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-                    CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "server_login.token"));
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+                    issuccess_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
                     CHK_(ptr);
                 } else goto handle_unusual;
                 continue;
@@ -1665,14 +1704,11 @@ const char *server_login::_InternalParse(const char *ptr, ::PROTOBUF_NAMESPACE_I
         target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_cmd(), target);
     }
 
-    // string token = 2;
-    if (this->token().size() > 0) {
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-                this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
-                ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-                "server_login.token");
-        target = stream->WriteStringMaybeAliased(
-                2, this->_internal_token(), target);
+    // int32 isSuccess = 2;
+    if (this->issuccess() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_issuccess(),
+                                                                                      target);
     }
 
     // string message = 3;
@@ -1702,13 +1738,6 @@ size_t server_login::ByteSizeLong() const {
     // Prevent compiler warnings about cached_has_bits being unused
     (void) cached_has_bits;
 
-    // string token = 2;
-    if (this->token().size() > 0) {
-        total_size += 1 +
-                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                              this->_internal_token());
-    }
-
     // string message = 3;
     if (this->message().size() > 0) {
         total_size += 1 +
@@ -1721,6 +1750,13 @@ size_t server_login::ByteSizeLong() const {
         total_size += 1 +
                       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
                               this->_internal_cmd());
+    }
+
+    // int32 isSuccess = 2;
+    if (this->issuccess() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_issuccess());
     }
 
     if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1754,14 +1790,14 @@ void server_login::MergeFrom(const server_login &from) {
     ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
     (void) cached_has_bits;
 
-    if (from.token().size() > 0) {
-        _internal_set_token(from._internal_token());
-    }
     if (from.message().size() > 0) {
         _internal_set_message(from._internal_message());
     }
     if (from.cmd() != 0) {
         _internal_set_cmd(from._internal_cmd());
+    }
+    if (from.issuccess() != 0) {
+        _internal_set_issuccess(from._internal_issuccess());
     }
 }
 
@@ -1786,9 +1822,13 @@ bool server_login::IsInitialized() const {
 void server_login::InternalSwap(server_login *other) {
     using std::swap;
     _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-    token_.Swap(&other->token_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     message_.Swap(&other->message_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-    swap(cmd_, other->cmd_);
+    ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+            PROTOBUF_FIELD_OFFSET(server_login, issuccess_)
+            + sizeof(server_login::issuccess_)
+            - PROTOBUF_FIELD_OFFSET(server_login, cmd_)>(
+            reinterpret_cast<char *>(&cmd_),
+            reinterpret_cast<char *>(&other->cmd_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata server_login::GetMetadata() const {
@@ -4123,6 +4163,460 @@ void chatMessage::InternalSwap(chatMessage *other) {
 }
 
 
+// ===================================================================
+
+void server_user_infor::InitAsDefaultInstance() {
+}
+
+class server_user_infor::_Internal {
+public:
+};
+
+server_user_infor::server_user_infor(::PROTOBUF_NAMESPACE_ID::Arena *arena)
+        : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+    SharedCtor();
+    RegisterArenaDtor(arena);
+    // @@protoc_insertion_point(arena_constructor:server_user_infor)
+}
+
+server_user_infor::server_user_infor(const server_user_infor &from)
+        : ::PROTOBUF_NAMESPACE_ID::Message() {
+    _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+    name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    if (!from._internal_name().empty()) {
+        name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
+                  GetArena());
+    }
+    avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    if (!from._internal_avatar().empty()) {
+        avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_avatar(),
+                    GetArena());
+    }
+    ::memcpy(&cmd_, &from.cmd_,
+             static_cast<size_t>(reinterpret_cast<char *>(&gamecurrency_) -
+                                 reinterpret_cast<char *>(&cmd_)) + sizeof(gamecurrency_));
+    // @@protoc_insertion_point(copy_constructor:server_user_infor)
+}
+
+void server_user_infor::SharedCtor() {
+    ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_server_user_infor_base_2eproto.base);
+    name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    ::memset(&cmd_, 0, static_cast<size_t>(
+                               reinterpret_cast<char *>(&gamecurrency_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(gamecurrency_));
+}
+
+server_user_infor::~server_user_infor() {
+    // @@protoc_insertion_point(destructor:server_user_infor)
+    SharedDtor();
+    _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void server_user_infor::SharedDtor() {
+            GOOGLE_DCHECK(GetArena() == nullptr);
+    name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    avatar_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void server_user_infor::ArenaDtor(void *object) {
+    server_user_infor *_this = reinterpret_cast< server_user_infor * >(object);
+    (void) _this;
+}
+
+void server_user_infor::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena *) {
+}
+
+void server_user_infor::SetCachedSize(int size) const {
+    _cached_size_.Set(size);
+}
+
+const server_user_infor &server_user_infor::default_instance() {
+    ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_server_user_infor_base_2eproto.base);
+    return *internal_default_instance();
+}
+
+
+void server_user_infor::Clear() {
+// @@protoc_insertion_point(message_clear_start:server_user_infor)
+    ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+    // Prevent compiler warnings about cached_has_bits being unused
+    (void) cached_has_bits;
+
+    name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    avatar_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    ::memset(&cmd_, 0, static_cast<size_t>(
+                               reinterpret_cast<char *>(&gamecurrency_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(gamecurrency_));
+    _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char *server_user_infor::_InternalParse(const char *ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext *ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+    ::PROTOBUF_NAMESPACE_ID::Arena *arena = GetArena();
+    (void) arena;
+    while (!ctx->Done(&ptr)) {
+        ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+        ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+        CHK_(ptr);
+        switch (tag >> 3) {
+            // int32 cmd = 1;
+            case 1:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+                    cmd_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // string name = 2;
+            case 2:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+                    auto str = _internal_mutable_name();
+                    ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+                    CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "server_user_infor.name"));
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 integral = 3;
+            case 3:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+                    integral_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 level = 4;
+            case 4:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+                    level_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 numsGame = 5;
+            case 5:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+                    numsgame_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 win = 6;
+            case 6:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+                    win_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 lose = 7;
+            case 7:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+                    lose_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 draw = 8;
+            case 8:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+                    draw_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 gameCurrency = 9;
+            case 9:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
+                    gamecurrency_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // bytes avatar = 10;
+            case 10:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
+                    auto str = _internal_mutable_avatar();
+                    ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+            default: {
+                handle_unusual:
+                if ((tag & 7) == 4 || tag == 0) {
+                    ctx->SetLastTag(tag);
+                    goto success;
+                }
+                ptr = UnknownFieldParse(tag,
+                                        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+                                        ptr, ctx);
+                CHK_(ptr != nullptr);
+                continue;
+            }
+        }  // switch
+    }  // while
+    success:
+    return ptr;
+    failure:
+    ptr = nullptr;
+    goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8 *server_user_infor::_InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8 *target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream *stream) const {
+    // @@protoc_insertion_point(serialize_to_array_start:server_user_infor)
+    ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+    (void) cached_has_bits;
+
+    // int32 cmd = 1;
+    if (this->cmd() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_cmd(), target);
+    }
+
+    // string name = 2;
+    if (this->name().size() > 0) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+                this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+                ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+                "server_user_infor.name");
+        target = stream->WriteStringMaybeAliased(
+                2, this->_internal_name(), target);
+    }
+
+    // int32 integral = 3;
+    if (this->integral() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_integral(),
+                                                                                      target);
+    }
+
+    // int32 level = 4;
+    if (this->level() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_level(),
+                                                                                      target);
+    }
+
+    // int32 numsGame = 5;
+    if (this->numsgame() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_numsgame(),
+                                                                                      target);
+    }
+
+    // int32 win = 6;
+    if (this->win() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_win(), target);
+    }
+
+    // int32 lose = 7;
+    if (this->lose() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_lose(),
+                                                                                      target);
+    }
+
+    // int32 draw = 8;
+    if (this->draw() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->_internal_draw(),
+                                                                                      target);
+    }
+
+    // int32 gameCurrency = 9;
+    if (this->gamecurrency() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(9, this->_internal_gamecurrency(),
+                                                                                      target);
+    }
+
+    // bytes avatar = 10;
+    if (this->avatar().size() > 0) {
+        target = stream->WriteBytesMaybeAliased(
+                10, this->_internal_avatar(), target);
+    }
+
+    if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+                _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
+                        ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    }
+    // @@protoc_insertion_point(serialize_to_array_end:server_user_infor)
+    return target;
+}
+
+size_t server_user_infor::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:server_user_infor)
+    size_t total_size = 0;
+
+    ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+    // Prevent compiler warnings about cached_has_bits being unused
+    (void) cached_has_bits;
+
+    // string name = 2;
+    if (this->name().size() > 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                              this->_internal_name());
+    }
+
+    // bytes avatar = 10;
+    if (this->avatar().size() > 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+                              this->_internal_avatar());
+    }
+
+    // int32 cmd = 1;
+    if (this->cmd() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_cmd());
+    }
+
+    // int32 integral = 3;
+    if (this->integral() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_integral());
+    }
+
+    // int32 level = 4;
+    if (this->level() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_level());
+    }
+
+    // int32 numsGame = 5;
+    if (this->numsgame() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_numsgame());
+    }
+
+    // int32 win = 6;
+    if (this->win() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_win());
+    }
+
+    // int32 lose = 7;
+    if (this->lose() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_lose());
+    }
+
+    // int32 draw = 8;
+    if (this->draw() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_draw());
+    }
+
+    // int32 gameCurrency = 9;
+    if (this->gamecurrency() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_gamecurrency());
+    }
+
+    if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+        return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+                _internal_metadata_, total_size, &_cached_size_);
+    }
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+    SetCachedSize(cached_size);
+    return total_size;
+}
+
+void server_user_infor::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+// @@protoc_insertion_point(generalized_merge_from_start:server_user_infor)
+            GOOGLE_DCHECK_NE(&from, this);
+    const server_user_infor *source =
+            ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<server_user_infor>(
+                    &from);
+    if (source == nullptr) {
+        // @@protoc_insertion_point(generalized_merge_from_cast_fail:server_user_infor)
+        ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+    } else {
+        // @@protoc_insertion_point(generalized_merge_from_cast_success:server_user_infor)
+        MergeFrom(*source);
+    }
+}
+
+void server_user_infor::MergeFrom(const server_user_infor &from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:server_user_infor)
+            GOOGLE_DCHECK_NE(&from, this);
+    _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+    ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+    (void) cached_has_bits;
+
+    if (from.name().size() > 0) {
+        _internal_set_name(from._internal_name());
+    }
+    if (from.avatar().size() > 0) {
+        _internal_set_avatar(from._internal_avatar());
+    }
+    if (from.cmd() != 0) {
+        _internal_set_cmd(from._internal_cmd());
+    }
+    if (from.integral() != 0) {
+        _internal_set_integral(from._internal_integral());
+    }
+    if (from.level() != 0) {
+        _internal_set_level(from._internal_level());
+    }
+    if (from.numsgame() != 0) {
+        _internal_set_numsgame(from._internal_numsgame());
+    }
+    if (from.win() != 0) {
+        _internal_set_win(from._internal_win());
+    }
+    if (from.lose() != 0) {
+        _internal_set_lose(from._internal_lose());
+    }
+    if (from.draw() != 0) {
+        _internal_set_draw(from._internal_draw());
+    }
+    if (from.gamecurrency() != 0) {
+        _internal_set_gamecurrency(from._internal_gamecurrency());
+    }
+}
+
+void server_user_infor::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+// @@protoc_insertion_point(generalized_copy_from_start:server_user_infor)
+    if (&from == this) return;
+    Clear();
+    MergeFrom(from);
+}
+
+void server_user_infor::CopyFrom(const server_user_infor &from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:server_user_infor)
+    if (&from == this) return;
+    Clear();
+    MergeFrom(from);
+}
+
+bool server_user_infor::IsInitialized() const {
+    return true;
+}
+
+void server_user_infor::InternalSwap(server_user_infor *other) {
+    using std::swap;
+    _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+    name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    avatar_.Swap(&other->avatar_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+            PROTOBUF_FIELD_OFFSET(server_user_infor, gamecurrency_)
+            + sizeof(server_user_infor::gamecurrency_)
+            - PROTOBUF_FIELD_OFFSET(server_user_infor, cmd_)>(
+            reinterpret_cast<char *>(&cmd_),
+            reinterpret_cast<char *>(&other->cmd_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata server_user_infor::GetMetadata() const {
+    return GetMetadataStatic();
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
         template<>
@@ -4193,6 +4687,11 @@ PROTOBUF_NAMESPACE_OPEN
         template<>
         PROTOBUF_NOINLINE ::chatMessage *Arena::CreateMaybeMessage<::chatMessage>(Arena *arena) {
             return Arena::CreateMessageInternal<::chatMessage>(arena);
+        }
+
+        template<>
+        PROTOBUF_NOINLINE ::server_user_infor *Arena::CreateMaybeMessage<::server_user_infor>(Arena *arena) {
+            return Arena::CreateMessageInternal<::server_user_infor>(arena);
         }
 PROTOBUF_NAMESPACE_CLOSE
 

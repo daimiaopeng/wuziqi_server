@@ -4,7 +4,6 @@
 #include "glog/logging.h"
 #include "base.pb.h"
 
-
 struct message {
     u_int len;
     char data[0];

@@ -17,13 +17,10 @@
 #include "Session.h"
 #include "glog/logging.h"
 #include "Redis.h"
-
+#include "Database.h"
 
 using namespace std;
 using boost::asio::ip::tcp;
-
-typedef boost::shared_ptr<tcp::socket> socket_ptr;
-typedef boost::shared_ptr<tcp::socket> socket_ptr;
 
 class Server : public enable_shared_from_this<Server> {
 public:
@@ -51,6 +48,7 @@ public:
     boost::asio::io_context &_ioContext;
     tcp::acceptor _acceptor;
     short _port;
+    Database database;
 };
 
 

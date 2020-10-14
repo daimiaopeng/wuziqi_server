@@ -24,7 +24,7 @@ message client_login{
 
 message server_login{
     int32 cmd = 1;
-    string token = 2;
+    int32 isSuccess = 2;
     string message = 3;
 }
 
@@ -75,4 +75,17 @@ message chatMessage{
     string data = 2;
     string time = 3;
     int32 type = 4;
+}
+
+message server_user_infor{
+    int32 cmd = 1;
+    string name = 2;
+    int32 integral = 3;
+    int32 level = 4;
+    int32 numsGame = 5;
+    int32 win = 6;
+    int32 lose = 7;
+    int32 draw = 8;
+    int32 gameCurrency = 9;
+    bytes avatar = 10;
 }
