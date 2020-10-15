@@ -33,6 +33,8 @@ public:
 
     void run();
 
+    shared_ptr<Session> findSession(const string &name);
+
 
 private:
     void do_accept();
@@ -40,6 +42,7 @@ private:
     void manageClient();
 
     void sendOnlineAll();
+
 
 public:
     mutex _mutex;

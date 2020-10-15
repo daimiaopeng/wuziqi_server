@@ -47,3 +47,12 @@ void Server::run() {
     manageClient();
     do_accept();
 }
+
+shared_ptr<Session> Server::findSession(const string &name) {
+    lock_guard<mutex> lock(_mutex);
+    auto res = _cilentMap.find(name);
+    if (res == _cilentMap.end()) {
+        return nullptr;
+    }
+    return res->second;
+}

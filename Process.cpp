@@ -30,6 +30,9 @@ void Process::resolve() {
         case 13:
             cmd13();
             break;
+        case 15:
+            cmd15();
+            break;
         default:
             LOG(INFO) << "cmd default";
     }
@@ -138,4 +141,23 @@ void Process::sendOne(const string &name, const string &data) {
         return;
     }
     res->second->writeData(data);
+}
+
+void Process::cmd15() {
+    whoWin w_w;
+    w_w.ParseFromArray(_buff.get(), _len);
+    int code = w_w.code();
+    if (code == 1) {
+        _session->_server->database.winGame(_session->_username);
+        _session->_server->database.loseGame(_session->_withusername);
+        _session->sendUserInfor();
+        auto withUserNameSession = _session->_server->findSession(_session->_withusername);
+        if (withUserNameSession != nullptr) {
+            withUserNameSession->sendUserInfor();
+        }
+    } else if (code == 2) {
+
+    } else {
+
+    }
 }

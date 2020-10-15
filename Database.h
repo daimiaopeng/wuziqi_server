@@ -74,6 +74,12 @@ public:
 
     bool login(const string &name, const string &passwd, string &message);
 
+    UserGameInfor getUserGameInfor(const string &name);
+
+    void winGame(const string &name);
+
+    void loseGame(const string &name);
+
 public:
     Storage _storage = InitStorage("db.sqlite");
 };

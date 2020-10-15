@@ -89,3 +89,8 @@ message server_user_infor{
     int32 gameCurrency = 9;
     bytes avatar = 10;
 }
+message whoWin{
+    int32 cmd = 1;
+    int32 code = 2;
+    string win = 3;
+}

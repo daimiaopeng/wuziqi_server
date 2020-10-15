@@ -7,7 +7,6 @@
 void Database::initUserGameInfor(const string &name) {
     UserGameInfor userGameInfor{-1, name, 0, 0, 0, 0, 0, 0, 0, ""};
     userGameInfor.id = _storage.insert(userGameInfor);
-
 }
 
 //注册
@@ -36,4 +35,36 @@ bool Database::login(const string &name, const string &passwd, string &message) 
         message = "登录密码错误";
         return false;
     }
+}
+
+UserGameInfor Database::getUserGameInfor(const string &name) {
+    auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
+    if (res.empty()) {
+        return {};
+    }
+    return res[0];
+}
+
+void Database::winGame(const string &name) {
+    auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
+    if (res.empty()) {
+        return;
+    }
+    UserGameInfor &userGameInfor = res[0];
+    userGameInfor.numsGame++;
+    userGameInfor.win++;
+    userGameInfor.integral = userGameInfor.integral + 5;
+    _storage.update(userGameInfor);
+}
+
+void Database::loseGame(const string &name) {
+    auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
+    if (res.empty()) {
+        return;
+    }
+    UserGameInfor &userGameInfor = res[0];
+    userGameInfor.numsGame++;
+    userGameInfor.lose++;
+    userGameInfor.integral = userGameInfor.integral - 3;
+    _storage.update(userGameInfor);
 }
