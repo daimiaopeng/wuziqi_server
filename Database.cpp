@@ -68,3 +68,16 @@ void Database::loseGame(const string &name) {
     userGameInfor.integral = userGameInfor.integral - 3;
     _storage.update(userGameInfor);
 }
+
+void Database::drawGame(const string &name) {
+    auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
+    if (res.empty()) {
+        return;
+    }
+    UserGameInfor &userGameInfor = res[0];
+    userGameInfor.numsGame++;
+    userGameInfor.draw++;
+    userGameInfor.integral = userGameInfor.integral + 2;
+    _storage.update(userGameInfor);
+}
+

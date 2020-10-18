@@ -90,7 +90,7 @@ message server_user_infor{
     bytes avatar = 10;
 }
 message whoWin{
-    int32 cmd = 1;
-    int32 code = 2;
+    int32 cmd = 1; //15
+    int32 code = 2;  // 1：谁赢 2：认输 3：和棋
     string win = 3;
 }

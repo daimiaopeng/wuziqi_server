@@ -80,6 +80,8 @@ public:
 
     void loseGame(const string &name);
 
+    void drawGame(const string &name);
+
 public:
     Storage _storage = InitStorage("db.sqlite");
 };

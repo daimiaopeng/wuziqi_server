@@ -147,17 +147,22 @@ void Process::cmd15() {
     whoWin w_w;
     w_w.ParseFromArray(_buff.get(), _len);
     int code = w_w.code();
+    auto withUserNameSession = _session->_server->findSession(_session->_withusername);
+
     if (code == 1) {
         _session->_server->database.winGame(_session->_username);
         _session->_server->database.loseGame(_session->_withusername);
-        _session->sendUserInfor();
-        auto withUserNameSession = _session->_server->findSession(_session->_withusername);
-        if (withUserNameSession != nullptr) {
-            withUserNameSession->sendUserInfor();
-        }
     } else if (code == 2) {
-
-    } else {
-
+        _session->_server->database.winGame(_session->_withusername);
+        _session->_server->database.loseGame(_session->_username);
+        w_w.set_win(_session->_withusername);
+    } else if (code == 3) {
+        _session->_server->database.drawGame(_session->_withusername);
+        _session->_server->database.drawGame(_session->_username);
+    }
+    _session->sendUserInfor();
+    if (withUserNameSession != nullptr) {
+        withUserNameSession->sendUserInfor();
+        withUserNameSession->writeData(w_w.SerializeAsString());
     }
 }
