@@ -91,6 +91,11 @@ message server_user_infor{
 }
 message whoWin{
     int32 cmd = 1; //15
-    int32 code = 2;  // 1：谁赢 2：认输 3：和棋
+    int32 code = 2;  // 1：谁赢 2：认输 3：发送和棋 4同意和棋 5  不同意
     string win = 3;
+}
+
+message withDraw {
+    int32 cmd = 1; //16
+    int32 nums = 2; //悔棋步数
 }

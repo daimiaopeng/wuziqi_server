@@ -33,6 +33,9 @@ void Process::resolve() {
         case 15:
             cmd15();
             break;
+        case 16:
+            cmd16();
+            break;
         default:
             LOG(INFO) << "cmd default";
     }
@@ -143,6 +146,7 @@ void Process::sendOne(const string &name, const string &data) {
     res->second->writeData(data);
 }
 
+//保存对战结果
 void Process::cmd15() {
     whoWin w_w;
     w_w.ParseFromArray(_buff.get(), _len);
@@ -157,12 +161,26 @@ void Process::cmd15() {
         _session->_server->database.loseGame(_session->_username);
         w_w.set_win(_session->_withusername);
     } else if (code == 3) {
+        //仅转发请求，服务器不做处理
+    } else if (code == 4) {
         _session->_server->database.drawGame(_session->_withusername);
         _session->_server->database.drawGame(_session->_username);
+    } else if (code == 5) {
+
     }
     _session->sendUserInfor();
     if (withUserNameSession != nullptr) {
         withUserNameSession->sendUserInfor();
         withUserNameSession->writeData(w_w.SerializeAsString());
+    }
+}
+
+//悔棋
+void Process::cmd16() {
+    withDraw w_d;
+    w_d.ParseFromArray(_buff.get(), _len);
+    auto withUserNameSession = _session->_server->findSession(_session->_withusername);
+    if (withUserNameSession != nullptr) {
+        withUserNameSession->writeData(w_d.SerializeAsString());
     }
 }

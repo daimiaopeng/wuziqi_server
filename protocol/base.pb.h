@@ -47,7 +47,7 @@ struct TableStruct_base_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
     static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-    static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[16]
+    static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[17]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
     static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
     static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -89,11 +89,8 @@ class server_loginDefaultTypeInternal;
 extern server_loginDefaultTypeInternal _server_login_default_instance_;
 class server_online_infor;
 class server_online_inforDefaultTypeInternal;
-
 extern server_online_inforDefaultTypeInternal _server_online_infor_default_instance_;
-
 class server_register;
-
 class server_registerDefaultTypeInternal;
 
 extern server_registerDefaultTypeInternal _server_register_default_instance_;
@@ -115,6 +112,12 @@ class whoWin;
 class whoWinDefaultTypeInternal;
 
 extern whoWinDefaultTypeInternal _whoWin_default_instance_;
+
+class withDraw;
+
+class withDrawDefaultTypeInternal;
+
+extern withDrawDefaultTypeInternal _withDraw_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
         template<>
         ::chatMessage *Arena::CreateMaybeMessage<::chatMessage>(Arena *);
@@ -163,6 +166,9 @@ PROTOBUF_NAMESPACE_OPEN
 
         template<>
         ::whoWin *Arena::CreateMaybeMessage<::whoWin>(Arena *);
+
+        template<>
+        ::withDraw *Arena::CreateMaybeMessage<::withDraw>(Arena *);
 PROTOBUF_NAMESPACE_CLOSE
 
 // ===================================================================
@@ -3839,6 +3845,196 @@ private:
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     friend struct ::TableStruct_base_2eproto;
 };
+// -------------------------------------------------------------------
+
+class withDraw PROTOBUF_FINAL :
+        public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:withDraw) */ {
+public:
+    inline withDraw() : withDraw(nullptr) {};
+
+    virtual ~withDraw();
+
+    withDraw(const withDraw &from);
+
+    withDraw(withDraw &&from) noexcept
+            : withDraw() {
+        *this = ::std::move(from);
+    }
+
+    inline withDraw &operator=(const withDraw &from) {
+        CopyFrom(from);
+        return *this;
+    }
+
+    inline withDraw &operator=(withDraw &&from) noexcept {
+        if (GetArena() == from.GetArena()) {
+            if (this != &from) InternalSwap(&from);
+        } else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
+
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor *descriptor() {
+        return GetDescriptor();
+    }
+
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor *GetDescriptor() {
+        return GetMetadataStatic().descriptor;
+    }
+
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection *GetReflection() {
+        return GetMetadataStatic().reflection;
+    }
+
+    static const withDraw &default_instance();
+
+    static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+    static inline const withDraw *internal_default_instance() {
+        return reinterpret_cast<const withDraw *>(
+                &_withDraw_default_instance_);
+    }
+
+    static constexpr int kIndexInFileMessages =
+            16;
+
+    friend void swap(withDraw &a, withDraw &b) {
+        a.Swap(&b);
+    }
+
+    inline void Swap(withDraw *other) {
+        if (other == this) return;
+        if (GetArena() == other->GetArena()) {
+            InternalSwap(other);
+        } else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+
+    void UnsafeArenaSwap(withDraw *other) {
+        if (other == this) return;
+                GOOGLE_DCHECK(GetArena() == other->GetArena());
+        InternalSwap(other);
+    }
+
+    // implements Message ----------------------------------------------
+
+    inline withDraw *New() const final {
+        return CreateMaybeMessage<withDraw>(nullptr);
+    }
+
+    withDraw *New(::PROTOBUF_NAMESPACE_ID::Arena *arena) const final {
+        return CreateMaybeMessage<withDraw>(arena);
+    }
+
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) final;
+
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) final;
+
+    void CopyFrom(const withDraw &from);
+
+    void MergeFrom(const withDraw &from);
+
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+
+    bool IsInitialized() const final;
+
+    size_t ByteSizeLong() const final;
+
+    const char *_InternalParse(const char *ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext *ctx) final;
+
+    ::PROTOBUF_NAMESPACE_ID::uint8 *_InternalSerialize(
+            ::PROTOBUF_NAMESPACE_ID::uint8 *target,
+            ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream *stream) const final;
+
+    int GetCachedSize() const final { return _cached_size_.Get(); }
+
+private:
+    inline void SharedCtor();
+
+    inline void SharedDtor();
+
+    void SetCachedSize(int size) const final;
+
+    void InternalSwap(withDraw *other);
+
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+        return "withDraw";
+    }
+
+protected:
+    explicit withDraw(::PROTOBUF_NAMESPACE_ID::Arena *arena);
+
+private:
+    static void ArenaDtor(void *object);
+
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena *arena);
+
+public:
+
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+private:
+    static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+        ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_base_2eproto);
+        return ::descriptor_table_base_2eproto.file_level_metadata[kIndexInFileMessages];
+    }
+
+public:
+
+    // nested types ----------------------------------------------------
+
+    // accessors -------------------------------------------------------
+
+    enum : int {
+        kCmdFieldNumber = 1,
+        kNumsFieldNumber = 2,
+    };
+
+    // int32 cmd = 1;
+    void clear_cmd();
+
+    ::PROTOBUF_NAMESPACE_ID::int32 cmd() const;
+
+    void set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_cmd() const;
+
+    void _internal_set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+public:
+
+    // int32 nums = 2;
+    void clear_nums();
+
+    ::PROTOBUF_NAMESPACE_ID::int32 nums() const;
+
+    void set_nums(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_nums() const;
+
+    void _internal_set_nums(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+public:
+
+    // @@protoc_insertion_point(class_scope:withDraw)
+private:
+    class _Internal;
+
+    template<typename T> friend
+    class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    ::PROTOBUF_NAMESPACE_ID::int32 cmd_;
+    ::PROTOBUF_NAMESPACE_ID::int32 nums_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_base_2eproto;
+};
 // ===================================================================
 
 
@@ -5847,21 +6043,17 @@ inline void server_user_infor::unsafe_arena_set_allocated_avatar(
 inline void whoWin::clear_cmd() {
     cmd_ = 0;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 whoWin::_internal_cmd() const {
     return cmd_;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 whoWin::cmd() const {
     // @@protoc_insertion_point(field_get:whoWin.cmd)
     return _internal_cmd();
 }
-
 inline void whoWin::_internal_set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
     cmd_ = value;
 }
-
 inline void whoWin::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_cmd(value);
     // @@protoc_insertion_point(field_set:whoWin.cmd)
@@ -5871,21 +6063,17 @@ inline void whoWin::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
 inline void whoWin::clear_code() {
     code_ = 0;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 whoWin::_internal_code() const {
     return code_;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 whoWin::code() const {
     // @@protoc_insertion_point(field_get:whoWin.code)
     return _internal_code();
 }
-
 inline void whoWin::_internal_set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
     code_ = value;
 }
-
 inline void whoWin::set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_code(value);
     // @@protoc_insertion_point(field_set:whoWin.code)
@@ -5985,9 +6173,63 @@ inline void whoWin::unsafe_arena_set_allocated_win(
     // @@protoc_insertion_point(field_unsafe_arena_set_allocated:whoWin.win)
 }
 
+// -------------------------------------------------------------------
+
+// withDraw
+
+// int32 cmd = 1;
+inline void withDraw::clear_cmd() {
+    cmd_ = 0;
+}
+
+inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::_internal_cmd() const {
+    return cmd_;
+}
+
+inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::cmd() const {
+    // @@protoc_insertion_point(field_get:withDraw.cmd)
+    return _internal_cmd();
+}
+
+inline void withDraw::_internal_set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
+
+    cmd_ = value;
+}
+
+inline void withDraw::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
+    _internal_set_cmd(value);
+    // @@protoc_insertion_point(field_set:withDraw.cmd)
+}
+
+// int32 nums = 2;
+inline void withDraw::clear_nums() {
+    nums_ = 0;
+}
+
+inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::_internal_nums() const {
+    return nums_;
+}
+
+inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::nums() const {
+    // @@protoc_insertion_point(field_get:withDraw.nums)
+    return _internal_nums();
+}
+
+inline void withDraw::_internal_set_nums(::PROTOBUF_NAMESPACE_ID::int32 value) {
+
+    nums_ = value;
+}
+
+inline void withDraw::set_nums(::PROTOBUF_NAMESPACE_ID::int32 value) {
+    _internal_set_nums(value);
+    // @@protoc_insertion_point(field_set:withDraw.nums)
+}
+
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

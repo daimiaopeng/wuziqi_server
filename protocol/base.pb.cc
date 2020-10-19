@@ -93,6 +93,11 @@ class whoWinDefaultTypeInternal {
 public:
     ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<whoWin> _instance;
 } _whoWin_default_instance_;
+
+class withDrawDefaultTypeInternal {
+public:
+    ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<withDraw> _instance;
+} _withDraw_default_instance_;
 static void InitDefaultsscc_info_chatMessage_base_2eproto() {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -349,7 +354,23 @@ static void InitDefaultsscc_info_whoWin_base_2eproto() {
                   ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_whoWin_base_2eproto},
          {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_base_2eproto[16];
+static void InitDefaultsscc_info_withDraw_base_2eproto() {
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+    {
+        void *ptr = &::_withDraw_default_instance_;
+        new(ptr) ::withDraw();
+        ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+    }
+    ::withDraw::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_withDraw_base_2eproto =
+        {{ATOMIC_VAR_INIT(
+                  ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_withDraw_base_2eproto},
+         {}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_base_2eproto[17];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const **file_level_enum_descriptors_base_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const **file_level_service_descriptors_base_2eproto = nullptr;
 
@@ -482,6 +503,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_base_2eproto::offsets[] PROTOB
         PROTOBUF_FIELD_OFFSET(::whoWin, cmd_),
         PROTOBUF_FIELD_OFFSET(::whoWin, code_),
         PROTOBUF_FIELD_OFFSET(::whoWin, win_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::withDraw, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        PROTOBUF_FIELD_OFFSET(::withDraw, cmd_),
+        PROTOBUF_FIELD_OFFSET(::withDraw, nums_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         {0,   -1, sizeof(::cmd)},
@@ -500,6 +528,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
         {96,  -1, sizeof(::chatMessage)},
         {105, -1, sizeof(::server_user_infor)},
         {120, -1, sizeof(::whoWin)},
+        {128, -1, sizeof(::withDraw)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const *const file_default_instances[] = {
@@ -519,6 +548,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const *const file_default_instances[] = 
         reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(&::_chatMessage_default_instance_),
         reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(&::_server_user_infor_default_instance_),
         reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(&::_whoWin_default_instance_),
+        reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(&::_withDraw_default_instance_),
 };
 
 const char descriptor_table_protodef_base_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -547,10 +577,11 @@ const char descriptor_table_protodef_base_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
         "\005\022\013\n\003win\030\006 \001(\005\022\014\n\004lose\030\007 \001(\005\022\014\n\004draw\030\010 \001"
         "(\005\022\024\n\014gameCurrency\030\t \001(\005\022\016\n\006avatar\030\n \001(\014"
         "\"0\n\006whoWin\022\013\n\003cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n"
-        "\003win\030\003 \001(\tb\006proto3";
+        "\003win\030\003 \001(\t\"%\n\010withDraw\022\013\n\003cmd\030\001 \001(\005\022\014\n\004n"
+        "ums\030\002 \001(\005b\006proto3";
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable *const descriptor_table_base_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_base_2eproto_sccs[16] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_base_2eproto_sccs[17] = {
         &scc_info_chatMessage_base_2eproto.base,
         &scc_info_client_create_game_base_2eproto.base,
         &scc_info_client_game_invite_base_2eproto.base,
@@ -567,14 +598,15 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_ba
         &scc_info_server_user_infor_base_2eproto.base,
         &scc_info_test_base_2eproto.base,
         &scc_info_whoWin_base_2eproto.base,
+        &scc_info_withDraw_base_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_base_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_base_2eproto = {
-        false, false, descriptor_table_protodef_base_2eproto, "base.proto", 1018,
-        &descriptor_table_base_2eproto_once, descriptor_table_base_2eproto_sccs, descriptor_table_base_2eproto_deps, 16,
+        false, false, descriptor_table_protodef_base_2eproto, "base.proto", 1057,
+        &descriptor_table_base_2eproto_once, descriptor_table_base_2eproto_sccs, descriptor_table_base_2eproto_deps, 17,
         0,
         schemas, file_default_instances, TableStruct_base_2eproto::offsets,
-        file_level_metadata_base_2eproto, 16, file_level_enum_descriptors_base_2eproto,
+        file_level_metadata_base_2eproto, 17, file_level_enum_descriptors_base_2eproto,
         file_level_service_descriptors_base_2eproto,
 };
 
@@ -4928,6 +4960,245 @@ void whoWin::InternalSwap(whoWin *other) {
 }
 
 
+// ===================================================================
+
+void withDraw::InitAsDefaultInstance() {
+}
+
+class withDraw::_Internal {
+public:
+};
+
+withDraw::withDraw(::PROTOBUF_NAMESPACE_ID::Arena *arena)
+        : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+    SharedCtor();
+    RegisterArenaDtor(arena);
+    // @@protoc_insertion_point(arena_constructor:withDraw)
+}
+
+withDraw::withDraw(const withDraw &from)
+        : ::PROTOBUF_NAMESPACE_ID::Message() {
+    _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+    ::memcpy(&cmd_, &from.cmd_,
+             static_cast<size_t>(reinterpret_cast<char *>(&nums_) -
+                                 reinterpret_cast<char *>(&cmd_)) + sizeof(nums_));
+    // @@protoc_insertion_point(copy_constructor:withDraw)
+}
+
+void withDraw::SharedCtor() {
+    ::memset(&cmd_, 0, static_cast<size_t>(
+                               reinterpret_cast<char *>(&nums_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(nums_));
+}
+
+withDraw::~withDraw() {
+    // @@protoc_insertion_point(destructor:withDraw)
+    SharedDtor();
+    _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void withDraw::SharedDtor() {
+            GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void withDraw::ArenaDtor(void *object) {
+    withDraw *_this = reinterpret_cast< withDraw * >(object);
+    (void) _this;
+}
+
+void withDraw::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena *) {
+}
+
+void withDraw::SetCachedSize(int size) const {
+    _cached_size_.Set(size);
+}
+
+const withDraw &withDraw::default_instance() {
+    ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_withDraw_base_2eproto.base);
+    return *internal_default_instance();
+}
+
+
+void withDraw::Clear() {
+// @@protoc_insertion_point(message_clear_start:withDraw)
+    ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+    // Prevent compiler warnings about cached_has_bits being unused
+    (void) cached_has_bits;
+
+    ::memset(&cmd_, 0, static_cast<size_t>(
+                               reinterpret_cast<char *>(&nums_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(nums_));
+    _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char *withDraw::_InternalParse(const char *ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext *ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+    ::PROTOBUF_NAMESPACE_ID::Arena *arena = GetArena();
+    (void) arena;
+    while (!ctx->Done(&ptr)) {
+        ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+        ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+        CHK_(ptr);
+        switch (tag >> 3) {
+            // int32 cmd = 1;
+            case 1:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+                    cmd_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 nums = 2;
+            case 2:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+                    nums_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+            default: {
+                handle_unusual:
+                if ((tag & 7) == 4 || tag == 0) {
+                    ctx->SetLastTag(tag);
+                    goto success;
+                }
+                ptr = UnknownFieldParse(tag,
+                                        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+                                        ptr, ctx);
+                CHK_(ptr != nullptr);
+                continue;
+            }
+        }  // switch
+    }  // while
+    success:
+    return ptr;
+    failure:
+    ptr = nullptr;
+    goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8 *withDraw::_InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8 *target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream *stream) const {
+    // @@protoc_insertion_point(serialize_to_array_start:withDraw)
+    ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+    (void) cached_has_bits;
+
+    // int32 cmd = 1;
+    if (this->cmd() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_cmd(), target);
+    }
+
+    // int32 nums = 2;
+    if (this->nums() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_nums(),
+                                                                                      target);
+    }
+
+    if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+                _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
+                        ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    }
+    // @@protoc_insertion_point(serialize_to_array_end:withDraw)
+    return target;
+}
+
+size_t withDraw::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:withDraw)
+    size_t total_size = 0;
+
+    ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+    // Prevent compiler warnings about cached_has_bits being unused
+    (void) cached_has_bits;
+
+    // int32 cmd = 1;
+    if (this->cmd() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_cmd());
+    }
+
+    // int32 nums = 2;
+    if (this->nums() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_nums());
+    }
+
+    if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+        return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+                _internal_metadata_, total_size, &_cached_size_);
+    }
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+    SetCachedSize(cached_size);
+    return total_size;
+}
+
+void withDraw::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+// @@protoc_insertion_point(generalized_merge_from_start:withDraw)
+            GOOGLE_DCHECK_NE(&from, this);
+    const withDraw *source =
+            ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<withDraw>(
+                    &from);
+    if (source == nullptr) {
+        // @@protoc_insertion_point(generalized_merge_from_cast_fail:withDraw)
+        ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+    } else {
+        // @@protoc_insertion_point(generalized_merge_from_cast_success:withDraw)
+        MergeFrom(*source);
+    }
+}
+
+void withDraw::MergeFrom(const withDraw &from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:withDraw)
+            GOOGLE_DCHECK_NE(&from, this);
+    _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+    ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+    (void) cached_has_bits;
+
+    if (from.cmd() != 0) {
+        _internal_set_cmd(from._internal_cmd());
+    }
+    if (from.nums() != 0) {
+        _internal_set_nums(from._internal_nums());
+    }
+}
+
+void withDraw::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+// @@protoc_insertion_point(generalized_copy_from_start:withDraw)
+    if (&from == this) return;
+    Clear();
+    MergeFrom(from);
+}
+
+void withDraw::CopyFrom(const withDraw &from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:withDraw)
+    if (&from == this) return;
+    Clear();
+    MergeFrom(from);
+}
+
+bool withDraw::IsInitialized() const {
+    return true;
+}
+
+void withDraw::InternalSwap(withDraw *other) {
+    using std::swap;
+    _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+    ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+            PROTOBUF_FIELD_OFFSET(withDraw, nums_)
+            + sizeof(withDraw::nums_)
+            - PROTOBUF_FIELD_OFFSET(withDraw, cmd_)>(
+            reinterpret_cast<char *>(&cmd_),
+            reinterpret_cast<char *>(&other->cmd_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata withDraw::GetMetadata() const {
+    return GetMetadataStatic();
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
         template<>
@@ -5008,6 +5279,11 @@ PROTOBUF_NAMESPACE_OPEN
         template<>
         PROTOBUF_NOINLINE ::whoWin *Arena::CreateMaybeMessage<::whoWin>(Arena *arena) {
             return Arena::CreateMessageInternal<::whoWin>(arena);
+        }
+
+        template<>
+        PROTOBUF_NOINLINE ::withDraw *Arena::CreateMaybeMessage<::withDraw>(Arena *arena) {
+            return Arena::CreateMessageInternal<::withDraw>(arena);
         }
 PROTOBUF_NAMESPACE_CLOSE
 
