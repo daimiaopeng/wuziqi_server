@@ -5,18 +5,20 @@
 #include "Database.h"
 
 void Database::initUserGameInfor(const string &name) {
-    UserGameInfor userGameInfor{-1, name, 0, 0, 0, 0, 0, 0, 0, ""};
+    User user = getUserInfor(name);
+    UserGameInfor userGameInfor{-1, name, 0, 0, 0, 0, 0, 0, 0, user.touxiang};
     userGameInfor.id = _storage.insert(userGameInfor);
 }
 
 //注册
-bool Database::registered(const string &name, const string &passwd, string &message) {
+bool Database::registered(const string &name, const string &passwd, const string &nicheng, const string &email,
+                          const string &touxiang, string &message) {
     auto res = _storage.get_all<User>(where(c(&User::name) == name));
     if (!res.empty()) {
         message = "该用户已注册";
         return false;
     }
-    User user{-1, name, passwd};
+    User user{-1, name, passwd, nicheng, email, touxiang};
     user.id = _storage.insert(user);
     message = "注册成功";
     return true;
@@ -44,6 +46,15 @@ UserGameInfor Database::getUserGameInfor(const string &name) {
     }
     return res[0];
 }
+
+User Database::getUserInfor(const string &name) {
+    auto res = _storage.get_all<User>(where(c(&User::name) == name));
+    if (res.empty()) {
+        return {};
+    }
+    return res[0];
+}
+
 
 void Database::winGame(const string &name) {
     auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
@@ -80,4 +91,5 @@ void Database::drawGame(const string &name) {
     userGameInfor.integral = userGameInfor.integral + 2;
     _storage.update(userGameInfor);
 }
+
 

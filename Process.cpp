@@ -77,8 +77,11 @@ void Process::cmd4() {
     c_r.ParseFromArray(_buff.get(), _len);
     string username = c_r.username();
     string passwd = c_r.passwd();
+    string nicheng = c_r.nicheng();
+    string email = c_r.email();
+    string touxiang = c_r.touxiang();
     string message;
-    bool isSuccess = _session->_server->database.registered(username, passwd, message);
+    bool isSuccess = _session->_server->database.registered(username, passwd, nicheng, email, touxiang, message);
     server_register s_r;
     s_r.set_cmd(5);
     s_r.set_issuccess(isSuccess);
@@ -122,17 +125,45 @@ void Process::cmd11() {
     server_game_isInvite s_g_isInvite;
     s_g_isInvite.set_cmd(12);
     lock_guard<mutex> lock(_session->_server->_mutex);
-    for (auto &s:_session->_server->_cilentMap) {
+    //设置自己->__withusername = 对方->_username;
+    for (const auto &s:_session->_server->_cilentMap) {
         if (_session->_username == s.second->_withusername) {
             _session->_withusername = s.second->_username;
             s_g_isInvite.set_code(code);
+            server_user_infor s_u_i;
+            auto userGameInfor = _session->_server->database.getUserGameInfor(_session->_username);
+            s_u_i.set_cmd(14);
+            s_u_i.set_code(2);
+            s_u_i.set_name(userGameInfor.name);
+            s_u_i.set_lose(userGameInfor.lose);
+            s_u_i.set_level(userGameInfor.level);
+            s_u_i.set_draw(userGameInfor.draw);
+            s_u_i.set_avatar(userGameInfor.avatar);
+            s_u_i.set_win(userGameInfor.win);
+            s_u_i.set_integral(userGameInfor.integral);
+            s_u_i.set_gamecurrency(userGameInfor.gameCurrency);
+            s_u_i.set_numsgame(userGameInfor.numsGame);
+            s.second->writeData(s_u_i.SerializeAsString());
+            auto userGameInfor2 = _session->_server->database.getUserGameInfor(_session->_withusername);
+            s_u_i.set_cmd(14);
+            s_u_i.set_code(2);
+            s_u_i.set_name(userGameInfor2.name);
+            s_u_i.set_lose(userGameInfor2.lose);
+            s_u_i.set_level(userGameInfor2.level);
+            s_u_i.set_draw(userGameInfor2.draw);
+            s_u_i.set_avatar(userGameInfor2.avatar);
+            s_u_i.set_win(userGameInfor2.win);
+            s_u_i.set_integral(userGameInfor2.integral);
+            s_u_i.set_gamecurrency(userGameInfor2.gameCurrency);
+            s_u_i.set_numsgame(userGameInfor2.numsGame);
+            _session->writeData(s_u_i.SerializeAsString());
             s.second->writeData(s_g_isInvite.SerializeAsString());
             break;
         }
     }
 }
 
-// 聊天消息
+// 转发聊天消息
 void Process::cmd13() {
     sendOne(_session->_withusername, string(_buff.get(), _len));
 }

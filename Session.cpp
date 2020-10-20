@@ -69,6 +69,7 @@ void Session::sendUserInfor() {
     auto res = _server->database._storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == _username));
     if (res.empty()) return;
     s_u_i.set_cmd(14);
+    s_u_i.set_code(1);
     s_u_i.set_name(res[0].name);
     s_u_i.set_lose(res[0].lose);
     s_u_i.set_level(res[0].level);

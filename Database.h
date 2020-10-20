@@ -34,6 +34,9 @@ struct User {
     int id; // id
     string name; //账户
     string passwd; //密码
+    string nicheng; //昵称
+    string email; //邮件
+    string touxiang; //头像
 };
 
 inline auto InitStorage(const string &path) {
@@ -55,7 +58,10 @@ inline auto InitStorage(const string &path) {
                     "User",
                     make_column("id", &User::id, autoincrement(), primary_key()),
                     make_column("name", &User::name),
-                    make_column("passwd", &User::passwd))
+                    make_column("passwd", &User::passwd),
+                    make_column("nicheng", &User::nicheng),
+                    make_column("email", &User::email),
+                    make_column("touxiang", &User::touxiang))
     );
 }
 
@@ -70,11 +76,14 @@ public:
 
     void initUserGameInfor(const string &name);
 
-    bool registered(const string &name, const string &passwd, string &message);
+    bool registered(const string &name, const string &passwd, const string &nicheng, const string &email,
+                    const string &touxiang, string &message);
 
     bool login(const string &name, const string &passwd, string &message);
 
     UserGameInfor getUserGameInfor(const string &name);
+
+    User getUserInfor(const string &name);
 
     void winGame(const string &name);
 

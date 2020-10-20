@@ -32,6 +32,9 @@ message client_register{
     int32 cmd = 1;
     string username = 2;
     string passwd = 3;
+    string nicheng = 4;
+    string email = 5;
+    string touxiang = 6;
 }
 
 message server_register{
@@ -87,11 +90,12 @@ message server_user_infor{
     int32 lose = 7;
     int32 draw = 8;
     int32 gameCurrency = 9;
-    bytes avatar = 10;
+    string avatar = 10;
+    int32 code = 11; //code = 1 自己的 code = 2别人的
 }
 message whoWin{
     int32 cmd = 1; //15
-    int32 code = 2;  // 1：谁赢 2：认输 3：发送和棋 4同意和棋 5  不同意
+    int32 code = 2;  // 1：谁赢 2：认输 3：发送和棋 4同意和棋 5 不同意
     string win = 3;
 }
 

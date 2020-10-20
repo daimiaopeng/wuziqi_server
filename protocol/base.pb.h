@@ -92,31 +92,18 @@ class server_online_inforDefaultTypeInternal;
 extern server_online_inforDefaultTypeInternal _server_online_infor_default_instance_;
 class server_register;
 class server_registerDefaultTypeInternal;
-
 extern server_registerDefaultTypeInternal _server_register_default_instance_;
-
 class server_user_infor;
-
 class server_user_inforDefaultTypeInternal;
-
 extern server_user_inforDefaultTypeInternal _server_user_infor_default_instance_;
-
 class test;
-
 class testDefaultTypeInternal;
-
 extern testDefaultTypeInternal _test_default_instance_;
-
 class whoWin;
-
 class whoWinDefaultTypeInternal;
-
 extern whoWinDefaultTypeInternal _whoWin_default_instance_;
-
 class withDraw;
-
 class withDrawDefaultTypeInternal;
-
 extern withDrawDefaultTypeInternal _withDraw_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
         template<>
@@ -1390,6 +1377,9 @@ public:
     enum : int {
         kUsernameFieldNumber = 2,
         kPasswdFieldNumber = 3,
+        kNichengFieldNumber = 4,
+        kEmailFieldNumber = 5,
+        kTouxiangFieldNumber = 6,
         kCmdFieldNumber = 1,
     };
 
@@ -1471,6 +1461,123 @@ private:
 
 public:
 
+    // string nicheng = 4;
+    void clear_nicheng();
+
+    const std::string &nicheng() const;
+
+    void set_nicheng(const std::string &value);
+
+    void set_nicheng(std::string &&value);
+
+    void set_nicheng(const char *value);
+
+    void set_nicheng(const char *value, size_t size);
+
+    std::string *mutable_nicheng();
+
+    std::string *release_nicheng();
+
+    void set_allocated_nicheng(std::string *nicheng);
+
+    GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+                                       "    string fields are deprecated and will be removed in a"
+                                       "    future release.")
+    std::string *unsafe_arena_release_nicheng();
+
+    GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+                                       "    string fields are deprecated and will be removed in a"
+                                       "    future release.")
+    void unsafe_arena_set_allocated_nicheng(
+            std::string *nicheng);
+
+private:
+    const std::string &_internal_nicheng() const;
+
+    void _internal_set_nicheng(const std::string &value);
+
+    std::string *_internal_mutable_nicheng();
+
+public:
+
+    // string email = 5;
+    void clear_email();
+
+    const std::string &email() const;
+
+    void set_email(const std::string &value);
+
+    void set_email(std::string &&value);
+
+    void set_email(const char *value);
+
+    void set_email(const char *value, size_t size);
+
+    std::string *mutable_email();
+
+    std::string *release_email();
+
+    void set_allocated_email(std::string *email);
+
+    GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+                                       "    string fields are deprecated and will be removed in a"
+                                       "    future release.")
+    std::string *unsafe_arena_release_email();
+
+    GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+                                       "    string fields are deprecated and will be removed in a"
+                                       "    future release.")
+    void unsafe_arena_set_allocated_email(
+            std::string *email);
+
+private:
+    const std::string &_internal_email() const;
+
+    void _internal_set_email(const std::string &value);
+
+    std::string *_internal_mutable_email();
+
+public:
+
+    // string touxiang = 6;
+    void clear_touxiang();
+
+    const std::string &touxiang() const;
+
+    void set_touxiang(const std::string &value);
+
+    void set_touxiang(std::string &&value);
+
+    void set_touxiang(const char *value);
+
+    void set_touxiang(const char *value, size_t size);
+
+    std::string *mutable_touxiang();
+
+    std::string *release_touxiang();
+
+    void set_allocated_touxiang(std::string *touxiang);
+
+    GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+                                       "    string fields are deprecated and will be removed in a"
+                                       "    future release.")
+    std::string *unsafe_arena_release_touxiang();
+
+    GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+                                       "    string fields are deprecated and will be removed in a"
+                                       "    future release.")
+    void unsafe_arena_set_allocated_touxiang(
+            std::string *touxiang);
+
+private:
+    const std::string &_internal_touxiang() const;
+
+    void _internal_set_touxiang(const std::string &value);
+
+    std::string *_internal_mutable_touxiang();
+
+public:
+
     // int32 cmd = 1;
     void clear_cmd();
 
@@ -1496,6 +1603,9 @@ private:
     typedef void DestructorSkippable_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr username_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr passwd_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nicheng_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr email_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr touxiang_;
     ::PROTOBUF_NAMESPACE_ID::int32 cmd_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     friend struct ::TableStruct_base_2eproto;
@@ -3400,6 +3510,7 @@ public:
         kLoseFieldNumber = 7,
         kDrawFieldNumber = 8,
         kGameCurrencyFieldNumber = 9,
+        kCodeFieldNumber = 11,
     };
 
     // string name = 2;
@@ -3441,7 +3552,7 @@ private:
 
 public:
 
-    // bytes avatar = 10;
+    // string avatar = 10;
     void clear_avatar();
 
     const std::string &avatar() const;
@@ -3452,7 +3563,7 @@ public:
 
     void set_avatar(const char *value);
 
-    void set_avatar(const void *value, size_t size);
+    void set_avatar(const char *value, size_t size);
 
     std::string *mutable_avatar();
 
@@ -3592,6 +3703,20 @@ private:
 
 public:
 
+    // int32 code = 11;
+    void clear_code();
+
+    ::PROTOBUF_NAMESPACE_ID::int32 code() const;
+
+    void set_code(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_code() const;
+
+    void _internal_set_code(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+public:
+
     // @@protoc_insertion_point(class_scope:server_user_infor)
 private:
     class _Internal;
@@ -3611,6 +3736,7 @@ private:
     ::PROTOBUF_NAMESPACE_ID::int32 lose_;
     ::PROTOBUF_NAMESPACE_ID::int32 draw_;
     ::PROTOBUF_NAMESPACE_ID::int32 gamecurrency_;
+    ::PROTOBUF_NAMESPACE_ID::int32 code_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     friend struct ::TableStruct_base_2eproto;
 };
@@ -4757,14 +4883,297 @@ inline void client_register::unsafe_arena_set_allocated_passwd(
     // @@protoc_insertion_point(field_unsafe_arena_set_allocated:client_register.passwd)
 }
 
+// string nicheng = 4;
+inline void client_register::clear_nicheng() {
+    nicheng_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline const std::string &client_register::nicheng() const {
+    // @@protoc_insertion_point(field_get:client_register.nicheng)
+    return _internal_nicheng();
+}
+
+inline void client_register::set_nicheng(const std::string &value) {
+    _internal_set_nicheng(value);
+    // @@protoc_insertion_point(field_set:client_register.nicheng)
+}
+
+inline std::string *client_register::mutable_nicheng() {
+    // @@protoc_insertion_point(field_mutable:client_register.nicheng)
+    return _internal_mutable_nicheng();
+}
+
+inline const std::string &client_register::_internal_nicheng() const {
+    return nicheng_.Get();
+}
+
+inline void client_register::_internal_set_nicheng(const std::string &value) {
+
+    nicheng_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+
+inline void client_register::set_nicheng(std::string &&value) {
+
+    nicheng_.Set(
+            &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+    // @@protoc_insertion_point(field_set_rvalue:client_register.nicheng)
+}
+
+inline void client_register::set_nicheng(const char *value) {
+            GOOGLE_DCHECK(value != nullptr);
+
+    nicheng_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+                 GetArena());
+    // @@protoc_insertion_point(field_set_char:client_register.nicheng)
+}
+
+inline void client_register::set_nicheng(const char *value,
+                                         size_t size) {
+
+    nicheng_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+            reinterpret_cast<const char *>(value), size), GetArena());
+    // @@protoc_insertion_point(field_set_pointer:client_register.nicheng)
+}
+
+inline std::string *client_register::_internal_mutable_nicheng() {
+
+    return nicheng_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline std::string *client_register::release_nicheng() {
+    // @@protoc_insertion_point(field_release:client_register.nicheng)
+    return nicheng_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline void client_register::set_allocated_nicheng(std::string *nicheng) {
+    if (nicheng != nullptr) {
+
+    } else {
+
+    }
+    nicheng_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nicheng,
+                          GetArena());
+    // @@protoc_insertion_point(field_set_allocated:client_register.nicheng)
+}
+
+inline std::string *client_register::unsafe_arena_release_nicheng() {
+    // @@protoc_insertion_point(field_unsafe_arena_release:client_register.nicheng)
+            GOOGLE_DCHECK(GetArena() != nullptr);
+
+    return nicheng_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+                                       GetArena());
+}
+
+inline void client_register::unsafe_arena_set_allocated_nicheng(
+        std::string *nicheng) {
+            GOOGLE_DCHECK(GetArena() != nullptr);
+    if (nicheng != nullptr) {
+
+    } else {
+
+    }
+    nicheng_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+                                     nicheng, GetArena());
+    // @@protoc_insertion_point(field_unsafe_arena_set_allocated:client_register.nicheng)
+}
+
+// string email = 5;
+inline void client_register::clear_email() {
+    email_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline const std::string &client_register::email() const {
+    // @@protoc_insertion_point(field_get:client_register.email)
+    return _internal_email();
+}
+
+inline void client_register::set_email(const std::string &value) {
+    _internal_set_email(value);
+    // @@protoc_insertion_point(field_set:client_register.email)
+}
+
+inline std::string *client_register::mutable_email() {
+    // @@protoc_insertion_point(field_mutable:client_register.email)
+    return _internal_mutable_email();
+}
+
+inline const std::string &client_register::_internal_email() const {
+    return email_.Get();
+}
+
+inline void client_register::_internal_set_email(const std::string &value) {
+
+    email_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+
+inline void client_register::set_email(std::string &&value) {
+
+    email_.Set(
+            &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+    // @@protoc_insertion_point(field_set_rvalue:client_register.email)
+}
+
+inline void client_register::set_email(const char *value) {
+            GOOGLE_DCHECK(value != nullptr);
+
+    email_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+               GetArena());
+    // @@protoc_insertion_point(field_set_char:client_register.email)
+}
+
+inline void client_register::set_email(const char *value,
+                                       size_t size) {
+
+    email_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+            reinterpret_cast<const char *>(value), size), GetArena());
+    // @@protoc_insertion_point(field_set_pointer:client_register.email)
+}
+
+inline std::string *client_register::_internal_mutable_email() {
+
+    return email_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline std::string *client_register::release_email() {
+    // @@protoc_insertion_point(field_release:client_register.email)
+    return email_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline void client_register::set_allocated_email(std::string *email) {
+    if (email != nullptr) {
+
+    } else {
+
+    }
+    email_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), email,
+                        GetArena());
+    // @@protoc_insertion_point(field_set_allocated:client_register.email)
+}
+
+inline std::string *client_register::unsafe_arena_release_email() {
+    // @@protoc_insertion_point(field_unsafe_arena_release:client_register.email)
+            GOOGLE_DCHECK(GetArena() != nullptr);
+
+    return email_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+                                     GetArena());
+}
+
+inline void client_register::unsafe_arena_set_allocated_email(
+        std::string *email) {
+            GOOGLE_DCHECK(GetArena() != nullptr);
+    if (email != nullptr) {
+
+    } else {
+
+    }
+    email_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+                                   email, GetArena());
+    // @@protoc_insertion_point(field_unsafe_arena_set_allocated:client_register.email)
+}
+
+// string touxiang = 6;
+inline void client_register::clear_touxiang() {
+    touxiang_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline const std::string &client_register::touxiang() const {
+    // @@protoc_insertion_point(field_get:client_register.touxiang)
+    return _internal_touxiang();
+}
+
+inline void client_register::set_touxiang(const std::string &value) {
+    _internal_set_touxiang(value);
+    // @@protoc_insertion_point(field_set:client_register.touxiang)
+}
+
+inline std::string *client_register::mutable_touxiang() {
+    // @@protoc_insertion_point(field_mutable:client_register.touxiang)
+    return _internal_mutable_touxiang();
+}
+
+inline const std::string &client_register::_internal_touxiang() const {
+    return touxiang_.Get();
+}
+
+inline void client_register::_internal_set_touxiang(const std::string &value) {
+
+    touxiang_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+
+inline void client_register::set_touxiang(std::string &&value) {
+
+    touxiang_.Set(
+            &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+    // @@protoc_insertion_point(field_set_rvalue:client_register.touxiang)
+}
+
+inline void client_register::set_touxiang(const char *value) {
+            GOOGLE_DCHECK(value != nullptr);
+
+    touxiang_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+                  GetArena());
+    // @@protoc_insertion_point(field_set_char:client_register.touxiang)
+}
+
+inline void client_register::set_touxiang(const char *value,
+                                          size_t size) {
+
+    touxiang_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+            reinterpret_cast<const char *>(value), size), GetArena());
+    // @@protoc_insertion_point(field_set_pointer:client_register.touxiang)
+}
+
+inline std::string *client_register::_internal_mutable_touxiang() {
+
+    return touxiang_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline std::string *client_register::release_touxiang() {
+    // @@protoc_insertion_point(field_release:client_register.touxiang)
+    return touxiang_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+inline void client_register::set_allocated_touxiang(std::string *touxiang) {
+    if (touxiang != nullptr) {
+
+    } else {
+
+    }
+    touxiang_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), touxiang,
+                           GetArena());
+    // @@protoc_insertion_point(field_set_allocated:client_register.touxiang)
+}
+
+inline std::string *client_register::unsafe_arena_release_touxiang() {
+    // @@protoc_insertion_point(field_unsafe_arena_release:client_register.touxiang)
+            GOOGLE_DCHECK(GetArena() != nullptr);
+
+    return touxiang_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+                                        GetArena());
+}
+
+inline void client_register::unsafe_arena_set_allocated_touxiang(
+        std::string *touxiang) {
+            GOOGLE_DCHECK(GetArena() != nullptr);
+    if (touxiang != nullptr) {
+
+    } else {
+
+    }
+    touxiang_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+                                      touxiang, GetArena());
+    // @@protoc_insertion_point(field_unsafe_arena_set_allocated:client_register.touxiang)
+}
+
 // -------------------------------------------------------------------
 
 // server_register
 
 // int32 cmd = 1;
 inline void server_register::clear_cmd() {
-  cmd_ = 0;
+    cmd_ = 0;
 }
+
 inline ::PROTOBUF_NAMESPACE_ID::int32 server_register::_internal_cmd() const {
   return cmd_;
 }
@@ -5941,7 +6350,7 @@ inline void server_user_infor::set_gamecurrency(::PROTOBUF_NAMESPACE_ID::int32 v
     // @@protoc_insertion_point(field_set:server_user_infor.gameCurrency)
 }
 
-// bytes avatar = 10;
+// string avatar = 10;
 inline void server_user_infor::clear_avatar() {
     avatar_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
@@ -5985,7 +6394,7 @@ inline void server_user_infor::set_avatar(const char *value) {
     // @@protoc_insertion_point(field_set_char:server_user_infor.avatar)
 }
 
-inline void server_user_infor::set_avatar(const void *value,
+inline void server_user_infor::set_avatar(const char *value,
                                           size_t size) {
 
     avatar_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
@@ -6035,6 +6444,30 @@ inline void server_user_infor::unsafe_arena_set_allocated_avatar(
     // @@protoc_insertion_point(field_unsafe_arena_set_allocated:server_user_infor.avatar)
 }
 
+// int32 code = 11;
+inline void server_user_infor::clear_code() {
+    code_ = 0;
+}
+
+inline ::PROTOBUF_NAMESPACE_ID::int32 server_user_infor::_internal_code() const {
+    return code_;
+}
+
+inline ::PROTOBUF_NAMESPACE_ID::int32 server_user_infor::code() const {
+    // @@protoc_insertion_point(field_get:server_user_infor.code)
+    return _internal_code();
+}
+
+inline void server_user_infor::_internal_set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
+
+    code_ = value;
+}
+
+inline void server_user_infor::set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
+    _internal_set_code(value);
+    // @@protoc_insertion_point(field_set:server_user_infor.code)
+}
+
 // -------------------------------------------------------------------
 
 // whoWin
@@ -6043,6 +6476,7 @@ inline void server_user_infor::unsafe_arena_set_allocated_avatar(
 inline void whoWin::clear_cmd() {
     cmd_ = 0;
 }
+
 inline ::PROTOBUF_NAMESPACE_ID::int32 whoWin::_internal_cmd() const {
     return cmd_;
 }
@@ -6181,21 +6615,17 @@ inline void whoWin::unsafe_arena_set_allocated_win(
 inline void withDraw::clear_cmd() {
     cmd_ = 0;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::_internal_cmd() const {
     return cmd_;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::cmd() const {
     // @@protoc_insertion_point(field_get:withDraw.cmd)
     return _internal_cmd();
 }
-
 inline void withDraw::_internal_set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
     cmd_ = value;
 }
-
 inline void withDraw::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_cmd(value);
     // @@protoc_insertion_point(field_set:withDraw.cmd)
@@ -6205,21 +6635,17 @@ inline void withDraw::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
 inline void withDraw::clear_nums() {
     nums_ = 0;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::_internal_nums() const {
     return nums_;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::nums() const {
     // @@protoc_insertion_point(field_get:withDraw.nums)
     return _internal_nums();
 }
-
 inline void withDraw::_internal_set_nums(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
     nums_ = value;
 }
-
 inline void withDraw::set_nums(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_nums(value);
     // @@protoc_insertion_point(field_set:withDraw.nums)

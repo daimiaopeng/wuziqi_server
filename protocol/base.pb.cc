@@ -421,6 +421,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_base_2eproto::offsets[] PROTOB
         PROTOBUF_FIELD_OFFSET(::client_register, cmd_),
         PROTOBUF_FIELD_OFFSET(::client_register, username_),
         PROTOBUF_FIELD_OFFSET(::client_register, passwd_),
+        PROTOBUF_FIELD_OFFSET(::client_register, nicheng_),
+        PROTOBUF_FIELD_OFFSET(::client_register, email_),
+        PROTOBUF_FIELD_OFFSET(::client_register, touxiang_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::server_register, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -495,6 +498,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_base_2eproto::offsets[] PROTOB
         PROTOBUF_FIELD_OFFSET(::server_user_infor, draw_),
         PROTOBUF_FIELD_OFFSET(::server_user_infor, gamecurrency_),
         PROTOBUF_FIELD_OFFSET(::server_user_infor, avatar_),
+        PROTOBUF_FIELD_OFFSET(::server_user_infor, code_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::whoWin, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -518,17 +522,17 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
         {22,  -1, sizeof(::client_login)},
         {30,  -1, sizeof(::server_login)},
         {38,  -1, sizeof(::client_register)},
-        {46,  -1, sizeof(::server_register)},
-        {54,  -1, sizeof(::client_create_game)},
-        {61,  -1, sizeof(::server_online_infor)},
-        {68,  -1, sizeof(::server_game_invite)},
-        {75,  -1, sizeof(::client_game_invite)},
-        {82,  -1, sizeof(::server_game_isInvite)},
-        {89,  -1, sizeof(::test)},
-        {96,  -1, sizeof(::chatMessage)},
-        {105, -1, sizeof(::server_user_infor)},
-        {120, -1, sizeof(::whoWin)},
-        {128, -1, sizeof(::withDraw)},
+        {49,  -1, sizeof(::server_register)},
+        {57,  -1, sizeof(::client_create_game)},
+        {64,  -1, sizeof(::server_online_infor)},
+        {71,  -1, sizeof(::server_game_invite)},
+        {78,  -1, sizeof(::client_game_invite)},
+        {85,  -1, sizeof(::server_game_isInvite)},
+        {92,  -1, sizeof(::test)},
+        {99,  -1, sizeof(::chatMessage)},
+        {108, -1, sizeof(::server_user_infor)},
+        {124, -1, sizeof(::whoWin)},
+        {132, -1, sizeof(::withDraw)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const *const file_default_instances[] = {
@@ -559,26 +563,28 @@ const char descriptor_table_protodef_base_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
         "nt_login\022\013\n\003cmd\030\001 \001(\005\022\020\n\010username\030\002 \001(\t\022"
         "\016\n\006passwd\030\003 \001(\t\"\?\n\014server_login\022\013\n\003cmd\030\001"
         " \001(\005\022\021\n\tisSuccess\030\002 \001(\005\022\017\n\007message\030\003 \001(\t"
-        "\"@\n\017client_register\022\013\n\003cmd\030\001 \001(\005\022\020\n\010user"
-        "name\030\002 \001(\t\022\016\n\006passwd\030\003 \001(\t\"B\n\017server_reg"
-        "ister\022\013\n\003cmd\030\001 \001(\005\022\021\n\tisSuccess\030\002 \001(\005\022\017\n"
-        "\007message\030\003 \001(\t\"7\n\022client_create_game\022\013\n\003"
-        "cmd\030\001 \001(\005\022\024\n\014withUsername\030\002 \001(\t\"2\n\023serve"
-        "r_online_infor\022\013\n\003cmd\030\001 \001(\005\022\016\n\006people\030\002 "
-        "\003(\t\"1\n\022server_game_invite\022\013\n\003cmd\030\001 \001(\005\022\016"
-        "\n\006people\030\002 \001(\t\"/\n\022client_game_invite\022\013\n\003"
-        "cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\"1\n\024server_game_i"
-        "sInvite\022\013\n\003cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\"#\n\004te"
-        "st\022\013\n\003cmd\030\001 \001(\005\022\016\n\006inform\030\002 \001(\t\"D\n\013chatM"
-        "essage\022\013\n\003cmd\030\001 \001(\005\022\014\n\004data\030\002 \001(\t\022\014\n\004tim"
-        "e\030\003 \001(\t\022\014\n\004type\030\004 \001(\005\"\260\001\n\021server_user_in"
-        "for\022\013\n\003cmd\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010integr"
-        "al\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\022\020\n\010numsGame\030\005 \001("
-        "\005\022\013\n\003win\030\006 \001(\005\022\014\n\004lose\030\007 \001(\005\022\014\n\004draw\030\010 \001"
-        "(\005\022\024\n\014gameCurrency\030\t \001(\005\022\016\n\006avatar\030\n \001(\014"
-        "\"0\n\006whoWin\022\013\n\003cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n"
-        "\003win\030\003 \001(\t\"%\n\010withDraw\022\013\n\003cmd\030\001 \001(\005\022\014\n\004n"
-        "ums\030\002 \001(\005b\006proto3";
+        "\"r\n\017client_register\022\013\n\003cmd\030\001 \001(\005\022\020\n\010user"
+        "name\030\002 \001(\t\022\016\n\006passwd\030\003 \001(\t\022\017\n\007nicheng\030\004 "
+        "\001(\t\022\r\n\005email\030\005 \001(\t\022\020\n\010touxiang\030\006 \001(\t\"B\n\017"
+        "server_register\022\013\n\003cmd\030\001 \001(\005\022\021\n\tisSucces"
+        "s\030\002 \001(\005\022\017\n\007message\030\003 \001(\t\"7\n\022client_creat"
+        "e_game\022\013\n\003cmd\030\001 \001(\005\022\024\n\014withUsername\030\002 \001("
+        "\t\"2\n\023server_online_infor\022\013\n\003cmd\030\001 \001(\005\022\016\n"
+        "\006people\030\002 \003(\t\"1\n\022server_game_invite\022\013\n\003c"
+        "md\030\001 \001(\005\022\016\n\006people\030\002 \001(\t\"/\n\022client_game_"
+        "invite\022\013\n\003cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\"1\n\024ser"
+        "ver_game_isInvite\022\013\n\003cmd\030\001 \001(\005\022\014\n\004code\030\002"
+        " \001(\005\"#\n\004test\022\013\n\003cmd\030\001 \001(\005\022\016\n\006inform\030\002 \001("
+        "\t\"D\n\013chatMessage\022\013\n\003cmd\030\001 \001(\005\022\014\n\004data\030\002 "
+        "\001(\t\022\014\n\004time\030\003 \001(\t\022\014\n\004type\030\004 \001(\005\"\276\001\n\021serv"
+        "er_user_infor\022\013\n\003cmd\030\001 \001(\005\022\014\n\004name\030\002 \001(\t"
+        "\022\020\n\010integral\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\022\020\n\010num"
+        "sGame\030\005 \001(\005\022\013\n\003win\030\006 \001(\005\022\014\n\004lose\030\007 \001(\005\022\014"
+        "\n\004draw\030\010 \001(\005\022\024\n\014gameCurrency\030\t \001(\005\022\016\n\006av"
+        "atar\030\n \001(\t\022\014\n\004code\030\013 \001(\005\"0\n\006whoWin\022\013\n\003cm"
+        "d\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003win\030\003 \001(\t\"%\n\010wi"
+        "thDraw\022\013\n\003cmd\030\001 \001(\005\022\014\n\004nums\030\002 \001(\005b\006proto"
+        "3";
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable *const descriptor_table_base_2eproto_deps[1] = {
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_base_2eproto_sccs[17] = {
@@ -602,7 +608,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_ba
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_base_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_base_2eproto = {
-        false, false, descriptor_table_protodef_base_2eproto, "base.proto", 1057,
+        false, false, descriptor_table_protodef_base_2eproto, "base.proto", 1121,
         &descriptor_table_base_2eproto_once, descriptor_table_base_2eproto_sccs, descriptor_table_base_2eproto_deps, 17,
         0,
         schemas, file_default_instances, TableStruct_base_2eproto::offsets,
@@ -1930,6 +1936,21 @@ client_register::client_register(const client_register &from)
         passwd_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_passwd(),
                     GetArena());
     }
+    nicheng_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    if (!from._internal_nicheng().empty()) {
+        nicheng_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_nicheng(),
+                     GetArena());
+    }
+    email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    if (!from._internal_email().empty()) {
+        email_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_email(),
+                   GetArena());
+    }
+    touxiang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    if (!from._internal_touxiang().empty()) {
+        touxiang_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_touxiang(),
+                      GetArena());
+    }
     cmd_ = from.cmd_;
     // @@protoc_insertion_point(copy_constructor:client_register)
 }
@@ -1938,6 +1959,9 @@ void client_register::SharedCtor() {
     ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_client_register_base_2eproto.base);
     username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
     passwd_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    nicheng_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    touxiang_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
     cmd_ = 0;
 }
 
@@ -1951,6 +1975,9 @@ void client_register::SharedDtor() {
             GOOGLE_DCHECK(GetArena() == nullptr);
     username_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
     passwd_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    nicheng_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    email_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    touxiang_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void client_register::ArenaDtor(void *object) {
@@ -1979,6 +2006,9 @@ void client_register::Clear() {
 
     username_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     passwd_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    nicheng_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    email_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    touxiang_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     cmd_ = 0;
     _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -2014,6 +2044,33 @@ const char *client_register::_InternalParse(const char *ptr, ::PROTOBUF_NAMESPAC
                     auto str = _internal_mutable_passwd();
                     ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
                     CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "client_register.passwd"));
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // string nicheng = 4;
+            case 4:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+                    auto str = _internal_mutable_nicheng();
+                    ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+                    CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "client_register.nicheng"));
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // string email = 5;
+            case 5:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+                    auto str = _internal_mutable_email();
+                    ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+                    CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "client_register.email"));
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // string touxiang = 6;
+            case 6:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+                    auto str = _internal_mutable_touxiang();
+                    ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+                    CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "client_register.touxiang"));
                     CHK_(ptr);
                 } else goto handle_unusual;
                 continue;
@@ -2071,6 +2128,36 @@ const char *client_register::_InternalParse(const char *ptr, ::PROTOBUF_NAMESPAC
                 3, this->_internal_passwd(), target);
     }
 
+    // string nicheng = 4;
+    if (this->nicheng().size() > 0) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+                this->_internal_nicheng().data(), static_cast<int>(this->_internal_nicheng().length()),
+                ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+                "client_register.nicheng");
+        target = stream->WriteStringMaybeAliased(
+                4, this->_internal_nicheng(), target);
+    }
+
+    // string email = 5;
+    if (this->email().size() > 0) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+                this->_internal_email().data(), static_cast<int>(this->_internal_email().length()),
+                ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+                "client_register.email");
+        target = stream->WriteStringMaybeAliased(
+                5, this->_internal_email(), target);
+    }
+
+    // string touxiang = 6;
+    if (this->touxiang().size() > 0) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+                this->_internal_touxiang().data(), static_cast<int>(this->_internal_touxiang().length()),
+                ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+                "client_register.touxiang");
+        target = stream->WriteStringMaybeAliased(
+                6, this->_internal_touxiang(), target);
+    }
+
     if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
         target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
                 _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
@@ -2100,6 +2187,27 @@ size_t client_register::ByteSizeLong() const {
         total_size += 1 +
                       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                               this->_internal_passwd());
+    }
+
+    // string nicheng = 4;
+    if (this->nicheng().size() > 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                              this->_internal_nicheng());
+    }
+
+    // string email = 5;
+    if (this->email().size() > 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                              this->_internal_email());
+    }
+
+    // string touxiang = 6;
+    if (this->touxiang().size() > 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+                              this->_internal_touxiang());
     }
 
     // int32 cmd = 1;
@@ -2146,6 +2254,15 @@ void client_register::MergeFrom(const client_register &from) {
     if (from.passwd().size() > 0) {
         _internal_set_passwd(from._internal_passwd());
     }
+    if (from.nicheng().size() > 0) {
+        _internal_set_nicheng(from._internal_nicheng());
+    }
+    if (from.email().size() > 0) {
+        _internal_set_email(from._internal_email());
+    }
+    if (from.touxiang().size() > 0) {
+        _internal_set_touxiang(from._internal_touxiang());
+    }
     if (from.cmd() != 0) {
         _internal_set_cmd(from._internal_cmd());
     }
@@ -2174,6 +2291,9 @@ void client_register::InternalSwap(client_register *other) {
     _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
     username_.Swap(&other->username_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     passwd_.Swap(&other->passwd_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    nicheng_.Swap(&other->nicheng_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    email_.Swap(&other->email_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+    touxiang_.Swap(&other->touxiang_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     swap(cmd_, other->cmd_);
 }
 
@@ -4258,8 +4378,8 @@ server_user_infor::server_user_infor(const server_user_infor &from)
                     GetArena());
     }
     ::memcpy(&cmd_, &from.cmd_,
-             static_cast<size_t>(reinterpret_cast<char *>(&gamecurrency_) -
-                                 reinterpret_cast<char *>(&cmd_)) + sizeof(gamecurrency_));
+             static_cast<size_t>(reinterpret_cast<char *>(&code_) -
+                                 reinterpret_cast<char *>(&cmd_)) + sizeof(code_));
     // @@protoc_insertion_point(copy_constructor:server_user_infor)
 }
 
@@ -4268,8 +4388,8 @@ void server_user_infor::SharedCtor() {
     name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
     avatar_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
     ::memset(&cmd_, 0, static_cast<size_t>(
-                               reinterpret_cast<char *>(&gamecurrency_) -
-                               reinterpret_cast<char *>(&cmd_)) + sizeof(gamecurrency_));
+                               reinterpret_cast<char *>(&code_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(code_));
 }
 
 server_user_infor::~server_user_infor() {
@@ -4311,8 +4431,8 @@ void server_user_infor::Clear() {
     name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     avatar_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     ::memset(&cmd_, 0, static_cast<size_t>(
-                               reinterpret_cast<char *>(&gamecurrency_) -
-                               reinterpret_cast<char *>(&cmd_)) + sizeof(gamecurrency_));
+                               reinterpret_cast<char *>(&code_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(code_));
     _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -4390,11 +4510,19 @@ const char *server_user_infor::_InternalParse(const char *ptr, ::PROTOBUF_NAMESP
                     CHK_(ptr);
                 } else goto handle_unusual;
                 continue;
-                // bytes avatar = 10;
+                // string avatar = 10;
             case 10:
                 if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
                     auto str = _internal_mutable_avatar();
                     ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+                    CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "server_user_infor.avatar"));
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 code = 11;
+            case 11:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 88)) {
+                    code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
                     CHK_(ptr);
                 } else goto handle_unusual;
                 continue;
@@ -4490,10 +4618,21 @@ const char *server_user_infor::_InternalParse(const char *ptr, ::PROTOBUF_NAMESP
                                                                                       target);
     }
 
-    // bytes avatar = 10;
+    // string avatar = 10;
     if (this->avatar().size() > 0) {
-        target = stream->WriteBytesMaybeAliased(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+                this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
+                ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+                "server_user_infor.avatar");
+        target = stream->WriteStringMaybeAliased(
                 10, this->_internal_avatar(), target);
+    }
+
+    // int32 code = 11;
+    if (this->code() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(11, this->_internal_code(),
+                                                                                      target);
     }
 
     if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4520,10 +4659,10 @@ size_t server_user_infor::ByteSizeLong() const {
                               this->_internal_name());
     }
 
-    // bytes avatar = 10;
+    // string avatar = 10;
     if (this->avatar().size() > 0) {
         total_size += 1 +
-                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
                               this->_internal_avatar());
     }
 
@@ -4581,6 +4720,13 @@ size_t server_user_infor::ByteSizeLong() const {
         total_size += 1 +
                       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
                               this->_internal_gamecurrency());
+    }
+
+    // int32 code = 11;
+    if (this->code() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_code());
     }
 
     if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4644,6 +4790,9 @@ void server_user_infor::MergeFrom(const server_user_infor &from) {
     if (from.gamecurrency() != 0) {
         _internal_set_gamecurrency(from._internal_gamecurrency());
     }
+    if (from.code() != 0) {
+        _internal_set_code(from._internal_code());
+    }
 }
 
 void server_user_infor::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
@@ -4670,8 +4819,8 @@ void server_user_infor::InternalSwap(server_user_infor *other) {
     name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     avatar_.Swap(&other->avatar_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
     ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-            PROTOBUF_FIELD_OFFSET(server_user_infor, gamecurrency_)
-            + sizeof(server_user_infor::gamecurrency_)
+            PROTOBUF_FIELD_OFFSET(server_user_infor, code_)
+            + sizeof(server_user_infor::code_)
             - PROTOBUF_FIELD_OFFSET(server_user_infor, cmd_)>(
             reinterpret_cast<char *>(&cmd_),
             reinterpret_cast<char *>(&other->cmd_));
