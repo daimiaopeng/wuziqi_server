@@ -45,7 +45,10 @@ private:
 
     void cmd16();
 
+    void cmd17();
+
     void sendOne(const string &name, const string &data);
+
 };
 
 

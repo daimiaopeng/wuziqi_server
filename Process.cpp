@@ -36,6 +36,9 @@ void Process::resolve() {
         case 16:
             cmd16();
             break;
+        case 17:
+            cmd17();
+            break;
         default:
             LOG(INFO) << "cmd default";
     }
@@ -55,7 +58,7 @@ void Process::cmd2() {
     string username = c_l.username();
     string passwd = c_l.passwd();
     string message;
-    bool code = _session->_server->database.login(username, passwd, message);
+    bool code = _session->_server->_database.login(username, passwd, message);
     if (code) {
         _session->_username = username;
         lock_guard<mutex> lock(_session->_server->_mutex);
@@ -81,14 +84,14 @@ void Process::cmd4() {
     string email = c_r.email();
     string touxiang = c_r.touxiang();
     string message;
-    bool isSuccess = _session->_server->database.registered(username, passwd, nicheng, email, touxiang, message);
+    bool isSuccess = _session->_server->_database.registered(username, passwd, nicheng, email, touxiang, message);
     server_register s_r;
     s_r.set_cmd(5);
     s_r.set_issuccess(isSuccess);
     s_r.set_message(message);
     _session->writeData(s_r.SerializeAsString());
     if (isSuccess) {
-        _session->_server->database.initUserGameInfor(username);
+        _session->_server->_database.initUserGameInfor(username);
     }
 }
 
@@ -130,33 +133,8 @@ void Process::cmd11() {
         if (_session->_username == s.second->_withusername) {
             _session->_withusername = s.second->_username;
             s_g_isInvite.set_code(code);
-            server_user_infor s_u_i;
-            auto userGameInfor = _session->_server->database.getUserGameInfor(_session->_username);
-            s_u_i.set_cmd(14);
-            s_u_i.set_code(2);
-            s_u_i.set_name(userGameInfor.name);
-            s_u_i.set_lose(userGameInfor.lose);
-            s_u_i.set_level(userGameInfor.level);
-            s_u_i.set_draw(userGameInfor.draw);
-            s_u_i.set_avatar(userGameInfor.avatar);
-            s_u_i.set_win(userGameInfor.win);
-            s_u_i.set_integral(userGameInfor.integral);
-            s_u_i.set_gamecurrency(userGameInfor.gameCurrency);
-            s_u_i.set_numsgame(userGameInfor.numsGame);
-            s.second->writeData(s_u_i.SerializeAsString());
-            auto userGameInfor2 = _session->_server->database.getUserGameInfor(_session->_withusername);
-            s_u_i.set_cmd(14);
-            s_u_i.set_code(2);
-            s_u_i.set_name(userGameInfor2.name);
-            s_u_i.set_lose(userGameInfor2.lose);
-            s_u_i.set_level(userGameInfor2.level);
-            s_u_i.set_draw(userGameInfor2.draw);
-            s_u_i.set_avatar(userGameInfor2.avatar);
-            s_u_i.set_win(userGameInfor2.win);
-            s_u_i.set_integral(userGameInfor2.integral);
-            s_u_i.set_gamecurrency(userGameInfor2.gameCurrency);
-            s_u_i.set_numsgame(userGameInfor2.numsGame);
-            _session->writeData(s_u_i.SerializeAsString());
+            _session->sendUserGameInfor(1);
+            s.second->sendUserGameInfor(2);
             s.second->writeData(s_g_isInvite.SerializeAsString());
             break;
         }
@@ -185,17 +163,17 @@ void Process::cmd15() {
     auto withUserNameSession = _session->_server->findSession(_session->_withusername);
 
     if (code == 1) {
-        _session->_server->database.winGame(_session->_username);
-        _session->_server->database.loseGame(_session->_withusername);
+        _session->_server->_database.winGame(_session->_username);
+        _session->_server->_database.loseGame(_session->_withusername);
     } else if (code == 2) {
-        _session->_server->database.winGame(_session->_withusername);
-        _session->_server->database.loseGame(_session->_username);
+        _session->_server->_database.winGame(_session->_withusername);
+        _session->_server->_database.loseGame(_session->_username);
         w_w.set_win(_session->_withusername);
     } else if (code == 3) {
         //仅转发请求，服务器不做处理
     } else if (code == 4) {
-        _session->_server->database.drawGame(_session->_withusername);
-        _session->_server->database.drawGame(_session->_username);
+        _session->_server->_database.drawGame(_session->_withusername);
+        _session->_server->_database.drawGame(_session->_username);
     } else if (code == 5) {
 
     }
@@ -215,3 +193,34 @@ void Process::cmd16() {
         withUserNameSession->writeData(w_d.SerializeAsString());
     }
 }
+
+void Process::cmd17() {
+    requestResources requestRes;
+    requestRes.ParseFromArray(_buff.get(), _len);
+    if (requestRes.code() == 1) {
+        _session->_match = true;
+        lock_guard<mutex> lock(_session->_server->_mutex);
+        //设置自己->__withusername = 对方->_username;
+        for (const auto &s:_session->_server->_cilentMap) {
+            if (s.first == _session->_username) {
+                continue;
+            }
+            if (s.second->_match) {
+                _session->_withusername = s.second->_username;
+                s.second->_withusername = _session->_username;
+                s.second->_match = false;
+                _session->_match = false;
+                responseResources responseRes;
+                responseRes.set_cmd(18);
+                responseRes.set_code(1);
+                _session->writeData(responseRes.SerializeAsString());
+                s.second->writeData(responseRes.SerializeAsString());
+                s.second->sendUserGameInfor(2);
+                _session->sendUserGameInfor(1);
+            }
+        }
+    } else if (requestRes.code() == 2) {
+        _session->_match = false;
+    }
+}
+

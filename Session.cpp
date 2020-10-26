@@ -39,8 +39,13 @@ void Session::do_read_body(int dataLen) {
 
 void Session::writeData(string data) {
     auto self(shared_from_this());
-    boost::asio::async_write(_socket, boost::asio::buffer(data.c_str(), data.length()),
-                             [this, self](boost::system::error_code ec, std::size_t len) {
+    int len = sizeof(message) + data.length();
+    message *messageStruct = static_cast<struct message *>(malloc(len));
+    messageStruct->len = data.length();
+    strncpy(messageStruct->data, data.c_str(), data.length());
+    boost::asio::async_write(_socket, boost::asio::buffer(messageStruct, len),
+                             [this, self, messageStruct](boost::system::error_code ec, std::size_t len) {
+                                 free(messageStruct);
                                  if (!ec) {
 //                                     LOG(INFO) << "do_write 发送成功";
                                  } else {
@@ -66,7 +71,7 @@ Session::~Session() {
 
 void Session::sendUserInfor() {
     server_user_infor s_u_i;
-    auto res = _server->database._storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == _username));
+    auto res = _server->_database._storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == _username));
     if (res.empty()) return;
     s_u_i.set_cmd(14);
     s_u_i.set_code(1);
@@ -79,5 +84,22 @@ void Session::sendUserInfor() {
     s_u_i.set_integral(res[0].integral);
     s_u_i.set_gamecurrency(res[0].gameCurrency);
     s_u_i.set_numsgame(res[0].numsGame);
+    writeData(s_u_i.SerializeAsString());
+}
+
+void Session::sendUserGameInfor(int code) {
+    server_user_infor s_u_i;
+    auto userGameInfor = _server->_database.getUserGameInfor(_username);
+    s_u_i.set_cmd(14);
+    s_u_i.set_code(code);
+    s_u_i.set_name(userGameInfor.name);
+    s_u_i.set_lose(userGameInfor.lose);
+    s_u_i.set_level(userGameInfor.level);
+    s_u_i.set_draw(userGameInfor.draw);
+    s_u_i.set_avatar(userGameInfor.avatar);
+    s_u_i.set_win(userGameInfor.win);
+    s_u_i.set_integral(userGameInfor.integral);
+    s_u_i.set_gamecurrency(userGameInfor.gameCurrency);
+    s_u_i.set_numsgame(userGameInfor.numsGame);
     writeData(s_u_i.SerializeAsString());
 }

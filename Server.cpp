@@ -37,7 +37,6 @@ void Server::sendOnlineAll() {
     }
     lock_guard<mutex> lock(_mutex);
     //    LOG(INFO) << _cilentMap.size();
-
     for (const auto &cilent:_cilentMap) {
         cilent.second->writeData(s_o_i.SerializeAsString());
     }

@@ -31,6 +31,7 @@ public:
 
     void start() {
         isColse = false;
+        _match = false;
         _username = "None";
         do_read_header();
     }
@@ -48,10 +49,14 @@ public:
     void close();
 
     void sendUserInfor();
+
+    void sendUserGameInfor(int code);
+
 public:
     string _withusername;
     bool isColse;
     string gameId;
+    bool _match;
     shared_ptr<Server> _server;
     string _username;
     tcp::socket _socket;

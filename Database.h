@@ -5,7 +5,7 @@
 #ifndef WUZIQI_SERVER_DATABASE_H
 #define WUZIQI_SERVER_DATABASE_H
 
-//#include "protocol/database.h"
+//#include "protocol/_database.h"
 #include <sqlite_orm.h>
 #include <string>
 #include <boost/regex.hpp>

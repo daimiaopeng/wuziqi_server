@@ -103,3 +103,14 @@ message withDraw {
     int32 cmd = 1; //16
     int32 nums = 2; //悔棋步数
 }
+
+message requestResources {
+    int32 cmd = 1; //17
+    int32 code = 2; //请求状态 1 寻找对手  2 取消匹配
+
+}
+
+message responseResources {
+    int32 cmd = 1; //18
+    int32 code = 2; //响应状态 1 找到对手，开始游戏
+}

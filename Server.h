@@ -11,7 +11,7 @@
 #include <iostream>
 #include <boost/asio.hpp>
 #include <thread>
-#include <list>
+#include <queue>
 #include <map>
 #include <mutex>
 #include "Session.h"
@@ -51,7 +51,7 @@ public:
     boost::asio::io_context &_ioContext;
     tcp::acceptor _acceptor;
     short _port;
-    Database database;
+    Database _database;
 };
 
 
