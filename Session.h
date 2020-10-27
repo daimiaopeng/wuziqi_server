@@ -50,7 +50,7 @@ public:
 
     void sendUserInfor();
 
-    void sendUserGameInfor(int code);
+    void sendUserGameInfor();
 
 public:
     string _withusername;

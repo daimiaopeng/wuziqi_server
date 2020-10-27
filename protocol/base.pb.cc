@@ -108,7 +108,6 @@ class responseResourcesDefaultTypeInternal {
 public:
     ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<responseResources> _instance;
 } _responseResources_default_instance_;
-
 static void InitDefaultsscc_info_chatMessage_base_2eproto() {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -571,6 +570,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_base_2eproto::offsets[] PROTOB
         ~0u,  // no _weak_field_map_
         PROTOBUF_FIELD_OFFSET(::responseResources, cmd_),
         PROTOBUF_FIELD_OFFSET(::responseResources, code_),
+        PROTOBUF_FIELD_OFFSET(::responseResources, code2_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
         {0,   -1, sizeof(::cmd)},
@@ -646,8 +646,8 @@ const char descriptor_table_protodef_base_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
         "d\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003win\030\003 \001(\t\"%\n\010wi"
         "thDraw\022\013\n\003cmd\030\001 \001(\005\022\014\n\004nums\030\002 \001(\005\"-\n\020req"
         "uestResources\022\013\n\003cmd\030\001 \001(\005\022\014\n\004code\030\002 \001(\005"
-        "\".\n\021responseResources\022\013\n\003cmd\030\001 \001(\005\022\014\n\004co"
-        "de\030\002 \001(\005b\006proto3";
+        "\"=\n\021responseResources\022\013\n\003cmd\030\001 \001(\005\022\014\n\004co"
+        "de\030\002 \001(\005\022\r\n\005code2\030\003 \001(\005b\006proto3";
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable *const descriptor_table_base_2eproto_deps[1] = {
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_base_2eproto_sccs[19] = {
@@ -673,7 +673,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase *const descriptor_table_ba
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_base_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_base_2eproto = {
-        false, false, descriptor_table_protodef_base_2eproto, "base.proto", 1216,
+        false, false, descriptor_table_protodef_base_2eproto, "base.proto", 1231,
         &descriptor_table_base_2eproto_once, descriptor_table_base_2eproto_sccs, descriptor_table_base_2eproto_deps, 19,
         0,
         schemas, file_default_instances, TableStruct_base_2eproto::offsets,
@@ -5672,15 +5672,15 @@ responseResources::responseResources(const responseResources &from)
         : ::PROTOBUF_NAMESPACE_ID::Message() {
     _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
     ::memcpy(&cmd_, &from.cmd_,
-             static_cast<size_t>(reinterpret_cast<char *>(&code_) -
-                                 reinterpret_cast<char *>(&cmd_)) + sizeof(code_));
+             static_cast<size_t>(reinterpret_cast<char *>(&code2_) -
+                                 reinterpret_cast<char *>(&cmd_)) + sizeof(code2_));
     // @@protoc_insertion_point(copy_constructor:responseResources)
 }
 
 void responseResources::SharedCtor() {
     ::memset(&cmd_, 0, static_cast<size_t>(
-                               reinterpret_cast<char *>(&code_) -
-                               reinterpret_cast<char *>(&cmd_)) + sizeof(code_));
+                               reinterpret_cast<char *>(&code2_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(code2_));
 }
 
 responseResources::~responseResources() {
@@ -5718,8 +5718,8 @@ void responseResources::Clear() {
     (void) cached_has_bits;
 
     ::memset(&cmd_, 0, static_cast<size_t>(
-                               reinterpret_cast<char *>(&code_) -
-                               reinterpret_cast<char *>(&cmd_)) + sizeof(code_));
+                               reinterpret_cast<char *>(&code2_) -
+                               reinterpret_cast<char *>(&cmd_)) + sizeof(code2_));
     _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -5743,6 +5743,13 @@ const char *responseResources::_InternalParse(const char *ptr, ::PROTOBUF_NAMESP
             case 2:
                 if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
                     code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+                    CHK_(ptr);
+                } else goto handle_unusual;
+                continue;
+                // int32 code2 = 3;
+            case 3:
+                if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+                    code2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
                     CHK_(ptr);
                 } else goto handle_unusual;
                 continue;
@@ -5787,6 +5794,13 @@ const char *responseResources::_InternalParse(const char *ptr, ::PROTOBUF_NAMESP
                                                                                       target);
     }
 
+    // int32 code2 = 3;
+    if (this->code2() != 0) {
+        target = stream->EnsureSpace(target);
+        target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_code2(),
+                                                                                      target);
+    }
+
     if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
         target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
                 _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
@@ -5816,6 +5830,13 @@ size_t responseResources::ByteSizeLong() const {
         total_size += 1 +
                       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
                               this->_internal_code());
+    }
+
+    // int32 code2 = 3;
+    if (this->code2() != 0) {
+        total_size += 1 +
+                      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                              this->_internal_code2());
     }
 
     if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -5855,6 +5876,9 @@ void responseResources::MergeFrom(const responseResources &from) {
     if (from.code() != 0) {
         _internal_set_code(from._internal_code());
     }
+    if (from.code2() != 0) {
+        _internal_set_code2(from._internal_code2());
+    }
 }
 
 void responseResources::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
@@ -5879,8 +5903,8 @@ void responseResources::InternalSwap(responseResources *other) {
     using std::swap;
     _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
     ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-            PROTOBUF_FIELD_OFFSET(responseResources, code_)
-            + sizeof(responseResources::code_)
+            PROTOBUF_FIELD_OFFSET(responseResources, code2_)
+            + sizeof(responseResources::code2_)
             - PROTOBUF_FIELD_OFFSET(responseResources, cmd_)>(
             reinterpret_cast<char *>(&cmd_),
             reinterpret_cast<char *>(&other->cmd_));

@@ -133,8 +133,7 @@ void Process::cmd11() {
         if (_session->_username == s.second->_withusername) {
             _session->_withusername = s.second->_username;
             s_g_isInvite.set_code(code);
-            _session->sendUserGameInfor(1);
-            s.second->sendUserGameInfor(2);
+            _session->_server->startGame(_session, s.second);
             s.second->writeData(s_g_isInvite.SerializeAsString());
             break;
         }
@@ -194,6 +193,7 @@ void Process::cmd16() {
     }
 }
 
+//匹配
 void Process::cmd17() {
     requestResources requestRes;
     requestRes.ParseFromArray(_buff.get(), _len);
@@ -213,10 +213,13 @@ void Process::cmd17() {
                 responseResources responseRes;
                 responseRes.set_cmd(18);
                 responseRes.set_code(1);
+                //分配颜色
+                int num = rand() % 2 + 1;
+                responseRes.set_code2(3 - num);
                 _session->writeData(responseRes.SerializeAsString());
+                responseRes.set_code2(num);
                 s.second->writeData(responseRes.SerializeAsString());
-                s.second->sendUserGameInfor(2);
-                _session->sendUserGameInfor(1);
+                _session->_server->startGame(_session, s.second);
             }
         }
     } else if (requestRes.code() == 2) {

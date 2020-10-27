@@ -35,6 +35,8 @@ public:
 
     shared_ptr<Session> findSession(const string &name);
 
+    void startGame(shared_ptr<Session> play1, shared_ptr<Session> play2);
+
 
 private:
     void do_accept();

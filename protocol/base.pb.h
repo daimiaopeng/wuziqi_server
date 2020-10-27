@@ -65,57 +65,31 @@ class client_game_inviteDefaultTypeInternal;
 extern client_game_inviteDefaultTypeInternal _client_game_invite_default_instance_;
 class client_gobang_position;
 class client_gobang_positionDefaultTypeInternal;
-
 extern client_gobang_positionDefaultTypeInternal _client_gobang_position_default_instance_;
-
 class client_login;
-
 class client_loginDefaultTypeInternal;
-
 extern client_loginDefaultTypeInternal _client_login_default_instance_;
-
 class client_register;
-
 class client_registerDefaultTypeInternal;
-
 extern client_registerDefaultTypeInternal _client_register_default_instance_;
-
 class cmd;
-
 class cmdDefaultTypeInternal;
-
 extern cmdDefaultTypeInternal _cmd_default_instance_;
-
 class requestResources;
-
 class requestResourcesDefaultTypeInternal;
-
 extern requestResourcesDefaultTypeInternal _requestResources_default_instance_;
-
 class responseResources;
-
 class responseResourcesDefaultTypeInternal;
-
 extern responseResourcesDefaultTypeInternal _responseResources_default_instance_;
-
 class server_game_invite;
-
 class server_game_inviteDefaultTypeInternal;
-
 extern server_game_inviteDefaultTypeInternal _server_game_invite_default_instance_;
-
 class server_game_isInvite;
-
 class server_game_isInviteDefaultTypeInternal;
-
 extern server_game_isInviteDefaultTypeInternal _server_game_isInvite_default_instance_;
-
 class server_gobang_position;
-
 class server_gobang_positionDefaultTypeInternal;
-
 extern server_gobang_positionDefaultTypeInternal _server_gobang_position_default_instance_;
-
 class server_login;
 class server_loginDefaultTypeInternal;
 extern server_loginDefaultTypeInternal _server_login_default_instance_;
@@ -4535,6 +4509,7 @@ public:
     enum : int {
         kCmdFieldNumber = 1,
         kCodeFieldNumber = 2,
+        kCode2FieldNumber = 3,
     };
 
     // int32 cmd = 1;
@@ -4565,6 +4540,20 @@ private:
 
 public:
 
+    // int32 code2 = 3;
+    void clear_code2();
+
+    ::PROTOBUF_NAMESPACE_ID::int32 code2() const;
+
+    void set_code2(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_code2() const;
+
+    void _internal_set_code2(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+public:
+
     // @@protoc_insertion_point(class_scope:responseResources)
 private:
     class _Internal;
@@ -4576,6 +4565,7 @@ private:
     typedef void DestructorSkippable_;
     ::PROTOBUF_NAMESPACE_ID::int32 cmd_;
     ::PROTOBUF_NAMESPACE_ID::int32 code_;
+    ::PROTOBUF_NAMESPACE_ID::int32 code2_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     friend struct ::TableStruct_base_2eproto;
 };
@@ -7054,12 +7044,10 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 withDraw::nums() const {
     // @@protoc_insertion_point(field_get:withDraw.nums)
     return _internal_nums();
 }
-
 inline void withDraw::_internal_set_nums(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
     nums_ = value;
 }
-
 inline void withDraw::set_nums(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_nums(value);
     // @@protoc_insertion_point(field_set:withDraw.nums)
@@ -7073,21 +7061,17 @@ inline void withDraw::set_nums(::PROTOBUF_NAMESPACE_ID::int32 value) {
 inline void requestResources::clear_cmd() {
     cmd_ = 0;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 requestResources::_internal_cmd() const {
     return cmd_;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 requestResources::cmd() const {
     // @@protoc_insertion_point(field_get:requestResources.cmd)
     return _internal_cmd();
 }
-
 inline void requestResources::_internal_set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
     cmd_ = value;
 }
-
 inline void requestResources::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_cmd(value);
     // @@protoc_insertion_point(field_set:requestResources.cmd)
@@ -7097,21 +7081,17 @@ inline void requestResources::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
 inline void requestResources::clear_code() {
     code_ = 0;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 requestResources::_internal_code() const {
     return code_;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 requestResources::code() const {
     // @@protoc_insertion_point(field_get:requestResources.code)
     return _internal_code();
 }
-
 inline void requestResources::_internal_set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
     code_ = value;
 }
-
 inline void requestResources::set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_code(value);
     // @@protoc_insertion_point(field_set:requestResources.code)
@@ -7125,21 +7105,17 @@ inline void requestResources::set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
 inline void responseResources::clear_cmd() {
     cmd_ = 0;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 responseResources::_internal_cmd() const {
     return cmd_;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 responseResources::cmd() const {
     // @@protoc_insertion_point(field_get:responseResources.cmd)
     return _internal_cmd();
 }
-
 inline void responseResources::_internal_set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
     cmd_ = value;
 }
-
 inline void responseResources::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_cmd(value);
     // @@protoc_insertion_point(field_set:responseResources.cmd)
@@ -7149,11 +7125,9 @@ inline void responseResources::set_cmd(::PROTOBUF_NAMESPACE_ID::int32 value) {
 inline void responseResources::clear_code() {
     code_ = 0;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 responseResources::_internal_code() const {
     return code_;
 }
-
 inline ::PROTOBUF_NAMESPACE_ID::int32 responseResources::code() const {
     // @@protoc_insertion_point(field_get:responseResources.code)
     return _internal_code();
@@ -7167,6 +7141,30 @@ inline void responseResources::_internal_set_code(::PROTOBUF_NAMESPACE_ID::int32
 inline void responseResources::set_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
     _internal_set_code(value);
     // @@protoc_insertion_point(field_set:responseResources.code)
+}
+
+// int32 code2 = 3;
+inline void responseResources::clear_code2() {
+    code2_ = 0;
+}
+
+inline ::PROTOBUF_NAMESPACE_ID::int32 responseResources::_internal_code2() const {
+    return code2_;
+}
+
+inline ::PROTOBUF_NAMESPACE_ID::int32 responseResources::code2() const {
+    // @@protoc_insertion_point(field_get:responseResources.code2)
+    return _internal_code2();
+}
+
+inline void responseResources::_internal_set_code2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+
+    code2_ = value;
+}
+
+inline void responseResources::set_code2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+    _internal_set_code2(value);
+    // @@protoc_insertion_point(field_set:responseResources.code2)
 }
 
 #ifdef __GNUC__

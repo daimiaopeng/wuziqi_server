@@ -113,4 +113,5 @@ message requestResources {
 message responseResources {
     int32 cmd = 1; //18
     int32 code = 2; //响应状态 1 找到对手，开始游戏
+    int32 code2 = 3; //1 白子 2黑子
 }

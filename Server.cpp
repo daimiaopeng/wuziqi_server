@@ -55,3 +55,26 @@ shared_ptr<Session> Server::findSession(const string &name) {
     }
     return res->second;
 }
+
+void Server::startGame(shared_ptr<Session> play1, shared_ptr<Session> play2) {
+    auto sendUserGameInfor = [&](shared_ptr<Session> play1, shared_ptr<Session> play2) {
+        server_user_infor s_u_i;
+        auto userGameInfor = _database.getUserGameInfor(play1->_username);
+        s_u_i.set_cmd(14);
+        s_u_i.set_code(1);
+        s_u_i.set_name(userGameInfor.name);
+        s_u_i.set_lose(userGameInfor.lose);
+        s_u_i.set_level(userGameInfor.level);
+        s_u_i.set_draw(userGameInfor.draw);
+        s_u_i.set_avatar(userGameInfor.avatar);
+        s_u_i.set_win(userGameInfor.win);
+        s_u_i.set_integral(userGameInfor.integral);
+        s_u_i.set_gamecurrency(userGameInfor.gameCurrency);
+        s_u_i.set_numsgame(userGameInfor.numsGame);
+        play1->writeData(s_u_i.SerializeAsString());
+        s_u_i.set_code(2);
+        play2->writeData(s_u_i.SerializeAsString());
+    };
+    sendUserGameInfor(play1, play2);
+    sendUserGameInfor(play2, play1);
+}

@@ -87,11 +87,11 @@ void Session::sendUserInfor() {
     writeData(s_u_i.SerializeAsString());
 }
 
-void Session::sendUserGameInfor(int code) {
+void Session::sendUserGameInfor() {
     server_user_infor s_u_i;
     auto userGameInfor = _server->_database.getUserGameInfor(_username);
     s_u_i.set_cmd(14);
-    s_u_i.set_code(code);
+    s_u_i.set_code(1);
     s_u_i.set_name(userGameInfor.name);
     s_u_i.set_lose(userGameInfor.lose);
     s_u_i.set_level(userGameInfor.level);
