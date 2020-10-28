@@ -4,7 +4,7 @@
 
 #include "Redis.h"
 
-Redis::Redis(string ip, u_int port, string passwd) : ip(ip), port(port) {
+Redis::Redis(string ip, int port, string passwd) : ip(ip), port(port) {
     conn = redisConnect(ip.c_str(), port);
     if (conn->err) printf("connection error:%s\n", conn->errstr);
     redisReply *reply = static_cast<redisReply *>(redisCommand(conn, "AUTH %s", passwd.c_str()));
@@ -17,7 +17,7 @@ Redis::Redis(string ip, u_int port, string passwd) : ip(ip), port(port) {
     freeReplyObject(reply);
 };
 
-Redis::Redis(string ip, u_int port) : ip(ip), port(port) {
+Redis::Redis(string ip, int port) : ip(ip), port(port) {
     conn = redisConnect(ip.c_str(), port);
     if (conn->err) {
         LOG(ERROR) << "Redis连接错误: " << conn->errstr;
@@ -147,7 +147,7 @@ int Redis::getRegisterNums() {
     return reply->integer;
 }
 
-set<string> Redis::getOnile() {
+std::set<string> Redis::getOnile() {
     set<string> all;
     auto reply = redisReply_ptr(redisCommand(conn, "HGETALL token"));
     auto element = reply->element;

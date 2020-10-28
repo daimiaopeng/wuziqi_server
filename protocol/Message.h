@@ -1,12 +1,20 @@
 #ifndef WUZIQI_SERVER_MESSAGE_H
 #define WUZIQI_SERVER_MESSAGE_H
 
+
+#ifdef _WIN32
+#include "windows/base.pb.h"
+#else
+
+#include "linux/base.pb.h"
+
+#endif
+
 #include "glog/logging.h"
-#include "base.pb.h"
 
 struct message {
-    u_int len;
-    char data[0];
+    int len;
+    char data[1];
 };
 
 

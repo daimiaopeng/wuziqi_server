@@ -11,9 +11,8 @@
 #include <boost/asio.hpp>
 #include <thread>
 #include <iostream>
-#include "protocol/Message.h"
 #include "glog/logging.h"
-#include "protocol/base.pb.h"
+#include "protocol/Message.h"
 #include "Redis.h"
 
 using namespace std;
@@ -61,7 +60,7 @@ public:
     string _username;
     tcp::socket _socket;
     struct message header;
-    int MESSAGE_SIZE = sizeof(message);
+    int MESSAGE_SIZE = 4;
 };
 
 

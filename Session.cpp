@@ -23,7 +23,6 @@ void Session::do_read_header() {
 void Session::do_read_body(int dataLen) {
     auto self(shared_from_this());
     shared_ptr<char[]> buff(new char[dataLen], [](char *ptr) { delete[](ptr); });
-
     boost::asio::async_read(_socket, boost::asio::buffer(buff.get(), dataLen),
                             [this, self, buff](boost::system::error_code ec, std::size_t len) {
                                 if (!ec) {
@@ -39,7 +38,8 @@ void Session::do_read_body(int dataLen) {
 
 void Session::writeData(string data) {
     auto self(shared_from_this());
-    int len = sizeof(message) + data.length();
+    if (!_socket.is_open()) return;
+    int len = MESSAGE_SIZE + data.length();
     message *messageStruct = static_cast<struct message *>(malloc(len));
     messageStruct->len = data.length();
     strncpy(messageStruct->data, data.c_str(), data.length());

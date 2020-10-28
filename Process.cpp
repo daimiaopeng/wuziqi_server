@@ -199,8 +199,8 @@ void Process::cmd17() {
     requestRes.ParseFromArray(_buff.get(), _len);
     if (requestRes.code() == 1) {
         _session->_match = true;
-        lock_guard<mutex> lock(_session->_server->_mutex);
         //设置自己->__withusername = 对方->_username;
+        lock_guard<mutex> lock(_session->_server->_mutex);
         for (const auto &s:_session->_server->_cilentMap) {
             if (s.first == _session->_username) {
                 continue;
@@ -224,6 +224,25 @@ void Process::cmd17() {
         }
     } else if (requestRes.code() == 2) {
         _session->_match = false;
+    } else if (requestRes.code() == 3) {
+        responseResources responseRes;
+        responseRes.set_cmd(18);
+        responseRes.set_code(2);
+        responseRes.set_code2(1);
+        auto withUserNameSession = _session->_server->findSession(_session->_withusername);
+        if (withUserNameSession != nullptr) {
+            withUserNameSession->writeData(responseRes.SerializeAsString());
+        }
+        auto s = _session->_server->findSession(_session->_withusername);
+        s->writeData(responseRes.SerializeAsString());
+    } else if (requestRes.code() == 4) {
+        responseResources responseRes;
+        responseRes.set_cmd(18);
+        responseRes.set_code(2);
+        responseRes.set_code2(2);
+        auto withUserNameSession = _session->_server->findSession(_session->_withusername);
+        if (withUserNameSession != nullptr) {
+            withUserNameSession->writeData(responseRes.SerializeAsString());
+        }
     }
 }
-

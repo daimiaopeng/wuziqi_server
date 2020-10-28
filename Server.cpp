@@ -8,7 +8,7 @@ void Server::do_accept() {
     auto self(shared_from_this());
     _acceptor.async_accept([this, self](boost::system::error_code ec, tcp::socket socket) {
         if (!ec) {
-            LOG(INFO) << "有客户端连接";
+            LOG(INFO) << "Client connection";
             auto session(std::make_shared<Session>(std::move(socket), self));
             session->start();
         }
@@ -17,7 +17,7 @@ void Server::do_accept() {
 }
 
 void Server::manageClient() {
-    LOG(INFO) << "manageClient线程运行中";
+    LOG(INFO) << "Client management thread is running";
     thread t([this]() {
         while (1) {
             {

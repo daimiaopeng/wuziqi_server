@@ -20,13 +20,13 @@ using namespace std;
 class Redis {
 private:
     string ip;
-    u_int port;
+    int port;
     redisContext *conn;
 
 public:
-    Redis(string ip, u_int port, string passwd);
+    Redis(string ip, int port, string passwd);
 
-    Redis(string ip, u_int port);
+    Redis(string ip, int port);
 
     void init();
 
@@ -42,7 +42,7 @@ public:
 
     void delName(int fd);
 
-    set<string> getOnile();
+    std::set<string> getOnile();
 
     redisContext *getConn() { return conn; };
 
