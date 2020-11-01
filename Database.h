@@ -14,6 +14,9 @@
 #include <glog/logging.h>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include "tool/md5.h"
+#include <boost/date_time/posix_time/posix_time.hpp>
+
+#define BOOST_DATE_TIME_SOURCE
 
 using namespace std;
 using namespace sqlite_orm;
@@ -39,6 +42,12 @@ struct User {
     string touxiang; //头像
 };
 
+struct SignInLog {
+    int id; // id
+    string name; //账户
+    string time; //时间
+};
+
 inline auto InitStorage(const string &path) {
     return make_storage(
             "wuziqi.db",
@@ -61,7 +70,12 @@ inline auto InitStorage(const string &path) {
                     make_column("passwd", &User::passwd),
                     make_column("nicheng", &User::nicheng),
                     make_column("email", &User::email),
-                    make_column("touxiang", &User::touxiang))
+                    make_column("touxiang", &User::touxiang)),
+            make_table(
+                    "SignInLog",
+                    make_column("id", &SignInLog::id, autoincrement(), primary_key()),
+                    make_column("name", &SignInLog::name),
+                    make_column("time", &SignInLog::time))
     );
 }
 
@@ -91,6 +105,7 @@ public:
 
     void drawGame(const string &name);
 
+    void signInLog(const string &name);
 public:
     Storage _storage = InitStorage("db.sqlite");
 };

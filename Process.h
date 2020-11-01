@@ -9,7 +9,6 @@
 #include <mutex>
 #include "protocol/Message.h"
 #include "Session.h"
-#include "Redis.h"
 #include "Server.h"
 
 using namespace std;

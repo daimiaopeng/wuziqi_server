@@ -92,4 +92,12 @@ void Database::drawGame(const string &name) {
     _storage.update(userGameInfor);
 }
 
-
+void Database::signInLog(const string &name) {
+    std::string strTime = boost::posix_time::to_iso_string(boost::posix_time::second_clock::local_time());
+    int pos = strTime.find('T');
+    strTime.replace(pos, 1, std::string("-"));
+    strTime.replace(pos + 3, 0, std::string(":"));
+    strTime.replace(pos + 6, 0, std::string(":"));
+    SignInLog signIn{-1, name, strTime};
+    _storage.insert(signIn);
+}

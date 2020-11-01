@@ -16,7 +16,6 @@
 #include <mutex>
 #include "Session.h"
 #include "glog/logging.h"
-#include "Redis.h"
 #include "Database.h"
 
 using namespace std;
@@ -24,10 +23,9 @@ using boost::asio::ip::tcp;
 
 class Server : public enable_shared_from_this<Server> {
 public:
-    Server(boost::asio::io_context &ioContext, short port, Redis &redis) : _ioContext(ioContext), _port(port),
-                                                                           _acceptor(ioContext,
-                                                                                     tcp::endpoint(tcp::v4(), port)),
-                                                                           _redis(redis) {
+    Server(boost::asio::io_context &ioContext, short port) : _ioContext(ioContext), _port(port),
+                                                             _acceptor(ioContext,
+                                                                       tcp::endpoint(tcp::v4(), port)) {
 
     }
 
@@ -49,7 +47,6 @@ private:
 public:
     mutex _mutex;
     map<string, shared_ptr<Session>> _cilentMap;
-    Redis &_redis;
     boost::asio::io_context &_ioContext;
     tcp::acceptor _acceptor;
     short _port;

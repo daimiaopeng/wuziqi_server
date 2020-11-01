@@ -13,7 +13,6 @@
 #include <iostream>
 #include "glog/logging.h"
 #include "protocol/Message.h"
-#include "Redis.h"
 
 using namespace std;
 using boost::asio::ip::tcp;

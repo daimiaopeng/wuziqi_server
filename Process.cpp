@@ -63,6 +63,7 @@ void Process::cmd2() {
         _session->_username = username;
         lock_guard<mutex> lock(_session->_server->_mutex);
         _session->_server->_cilentMap[username] = _session;
+        _session->_server->_database.signInLog(username);
     }
     server_login s_l;
     s_l.set_cmd(3);
