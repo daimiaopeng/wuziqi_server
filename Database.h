@@ -13,7 +13,6 @@
 #include <set>
 #include <glog/logging.h>
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include "tool/md5.h"
 #include <boost/date_time/posix_time/posix_time.hpp>
 
 #define BOOST_DATE_TIME_SOURCE
@@ -25,7 +24,7 @@ struct UserGameInfor {
     int id; // id
     string name; // 昵称
     int integral; // 积分
-    int level; //级别
+    int level; //等级
     int numsGame; // 总盘数
     int win; //赢
     int lose; //输
@@ -106,6 +105,7 @@ public:
     void drawGame(const string &name);
 
     void signInLog(const string &name);
+
 public:
     Storage _storage = InitStorage("db.sqlite");
 };

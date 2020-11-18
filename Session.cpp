@@ -5,7 +5,7 @@
 #include "Session.h"
 #include "Process.h"
 
-
+//先读头
 void Session::do_read_header() {
     auto self(shared_from_this());
     _socket.async_read_some(boost::asio::buffer(&header, MESSAGE_SIZE),
@@ -20,6 +20,7 @@ void Session::do_read_header() {
                             });
 }
 
+//读实际数据
 void Session::do_read_body(int dataLen) {
     auto self(shared_from_this());
     shared_ptr<char[]> buff(new char[dataLen], [](char *ptr) { delete[](ptr); });
@@ -36,6 +37,7 @@ void Session::do_read_body(int dataLen) {
                             });
 }
 
+//发送数据
 void Session::writeData(string data) {
     auto self(shared_from_this());
     if (!_socket.is_open()) return;
@@ -55,6 +57,7 @@ void Session::writeData(string data) {
                              });
 }
 
+//关闭session
 void Session::close() {
     _socket.close();
 //    LOG(INFO) << "用户"<<_username<<"断开连接";
@@ -65,7 +68,6 @@ void Session::close() {
 
 Session::~Session() {
     close();
-
     LOG(INFO) << "客户端关闭";
 }
 

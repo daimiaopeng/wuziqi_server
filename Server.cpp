@@ -4,6 +4,7 @@
 
 #include "Server.h"
 
+//接收连接，保存session
 void Server::do_accept() {
     auto self(shared_from_this());
     _acceptor.async_accept([this, self](boost::system::error_code ec, tcp::socket socket) {
@@ -16,6 +17,7 @@ void Server::do_accept() {
     });
 }
 
+//单独的session管理线程
 void Server::manageClient() {
     LOG(INFO) << "Client management thread is running";
     thread t([this]() {
@@ -29,6 +31,7 @@ void Server::manageClient() {
     t.detach();
 }
 
+//发送在线的人信息，即在线列表
 void Server::sendOnlineAll() {
     server_online_infor s_o_i;
     s_o_i.set_cmd(9);
@@ -42,11 +45,13 @@ void Server::sendOnlineAll() {
     }
 }
 
+//运行服务
 void Server::run() {
     manageClient();
     do_accept();
 }
 
+//找到指定用户session
 shared_ptr<Session> Server::findSession(const string &name) {
     lock_guard<mutex> lock(_mutex);
     auto res = _cilentMap.find(name);
@@ -56,6 +61,7 @@ shared_ptr<Session> Server::findSession(const string &name) {
     return res->second;
 }
 
+//开始游戏时应该发送的数据包
 void Server::startGame(shared_ptr<Session> play1, shared_ptr<Session> play2) {
     auto sendUserGameInfor = [&](shared_ptr<Session> play1, shared_ptr<Session> play2) {
         server_user_infor s_u_i;

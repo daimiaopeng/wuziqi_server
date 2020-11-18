@@ -6,6 +6,7 @@
 using namespace std;
 using ptree = boost::property_tree::ptree;
 
+//初始化日志服务
 void initLog(bool isWriteLog) {
     google::InitGoogleLogging("serverLog");    //初始化log的名字为serverLog
     if (isWriteLog) {

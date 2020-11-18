@@ -4,13 +4,14 @@
 
 #include "Database.h"
 
+//初始化用户游戏信息
 void Database::initUserGameInfor(const string &name) {
     User user = getUserInfor(name);
     UserGameInfor userGameInfor{-1, name, 0, 0, 0, 0, 0, 0, 0, user.touxiang};
     userGameInfor.id = _storage.insert(userGameInfor);
 }
 
-//注册
+//注册初始化用户信息
 bool Database::registered(const string &name, const string &passwd, const string &nicheng, const string &email,
                           const string &touxiang, string &message) {
     auto res = _storage.get_all<User>(where(c(&User::name) == name));
@@ -24,6 +25,7 @@ bool Database::registered(const string &name, const string &passwd, const string
     return true;
 }
 
+//登录判断
 bool Database::login(const string &name, const string &passwd, string &message) {
     auto res = _storage.get_all<User>(where(c(&User::name) == name));
     if (res.empty()) {
@@ -39,6 +41,7 @@ bool Database::login(const string &name, const string &passwd, string &message) 
     }
 }
 
+//获取用户游戏信息
 UserGameInfor Database::getUserGameInfor(const string &name) {
     auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
     if (res.empty()) {
@@ -47,6 +50,7 @@ UserGameInfor Database::getUserGameInfor(const string &name) {
     return res[0];
 }
 
+//获取用户信息
 User Database::getUserInfor(const string &name) {
     auto res = _storage.get_all<User>(where(c(&User::name) == name));
     if (res.empty()) {
@@ -55,7 +59,7 @@ User Database::getUserInfor(const string &name) {
     return res[0];
 }
 
-
+//用户赢了游戏后数据库操作
 void Database::winGame(const string &name) {
     auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
     if (res.empty()) {
@@ -68,6 +72,7 @@ void Database::winGame(const string &name) {
     _storage.update(userGameInfor);
 }
 
+//用户输了游戏后数据库操作
 void Database::loseGame(const string &name) {
     auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
     if (res.empty()) {
@@ -80,6 +85,7 @@ void Database::loseGame(const string &name) {
     _storage.update(userGameInfor);
 }
 
+//用户和棋游戏后数据库操作
 void Database::drawGame(const string &name) {
     auto res = _storage.get_all<UserGameInfor>(where(c(&UserGameInfor::name) == name));
     if (res.empty()) {
@@ -92,6 +98,7 @@ void Database::drawGame(const string &name) {
     _storage.update(userGameInfor);
 }
 
+//用户登录记录
 void Database::signInLog(const string &name) {
     std::string strTime = boost::posix_time::to_iso_string(boost::posix_time::second_clock::local_time());
     int pos = strTime.find('T');

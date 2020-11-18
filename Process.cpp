@@ -4,6 +4,7 @@
 
 #include "Process.h"
 
+//根据cmd的命令跳转到相应的处理函数
 void Process::resolve() {
     cmd c;
     c.ParseFromArray(_buff.get(), _len);
@@ -146,6 +147,7 @@ void Process::cmd13() {
     sendOne(_session->_withusername, string(_buff.get(), _len));
 }
 
+//给某人发送一些数据
 void Process::sendOne(const string &name, const string &data) {
     lock_guard<mutex> lock(_session->_server->_mutex);
     auto res = _session->_server->_cilentMap.find(name);

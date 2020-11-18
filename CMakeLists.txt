@@ -29,9 +29,9 @@ link_directories(${Boost_LIBRARY_DIR})
 
 
 IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
-    add_executable(wuziqi_server main.cpp Session.cpp Session.h protocol/Message.h Server.cpp Server.h protocol/linux/base.pb.cc protocol/linux/base.pb.h Process.cpp Process.h tool/md5.cpp tool/md5.h Game.cpp Game.h Database.cpp Database.h)
+    add_executable(wuziqi_server main.cpp Session.cpp Session.h protocol/Message.h Server.cpp Server.h protocol/linux/base.pb.cc protocol/linux/base.pb.h Process.cpp Process.h Database.cpp Database.h)
     target_link_libraries(wuziqi_server pthread boost_system boost_thread boost_coroutine boost_date_time protoc protobuf protobuf-lite glog sqlite3)
 ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    add_executable(wuziqi_server main.cpp Session.cpp Session.h protocol/Message.h Server.cpp Server.h protocol/windows/base.pb.cc protocol/windows/base.pb.h Process.cpp Process.h tool/md5.cpp tool/md5.h Game.cpp Game.h Database.cpp Database.h)
+    add_executable(wuziqi_server main.cpp Session.cpp Session.h protocol/Message.h Server.cpp Server.h protocol/windows/base.pb.cc protocol/windows/base.pb.h Process.cpp Process.h Database.cpp Database.h)
     target_link_libraries(wuziqi_server PRIVATE protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite glog::glog sqlite3)
 ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
