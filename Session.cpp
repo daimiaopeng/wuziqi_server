@@ -27,8 +27,13 @@ void Session::do_read_body(int dataLen) {
     boost::asio::async_read(_socket, boost::asio::buffer(buff.get(), dataLen),
                             [this, self, buff](boost::system::error_code ec, std::size_t len) {
                                 if (!ec) {
-                                    Process process(self, buff, len);
-                                    process.resolve();
+                                    try {
+                                        Process process(self, buff, len);
+                                        process.resolve();
+                                    }
+                                    catch (exception &e) {
+                                        LOG(ERROR) << "process error:" << e.what();
+                                    }
                                 } else {
                                     close();
                                     LOG(INFO) << "close() do_read_body ec: " << ec;
