@@ -1,0 +1,8 @@
+/temp
+/out
+/windows平台下
+/cmake-build-debug
+/.idea
+/.vs
+CMakeSettings.json
+test.cpp
