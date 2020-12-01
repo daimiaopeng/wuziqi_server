@@ -15,7 +15,7 @@ void initLog(bool isWriteLog, string logDir) {
     google::SetStderrLogging(google::GLOG_INFO);
     google::SetLogFilenameExtension("log_");
     FLAGS_colorlogtostderr = true;  // 设置日志颜色
-    FLAGS_logbufsecs = 1;
+    FLAGS_logbufsecs = 0;
     FLAGS_max_log_size = 1024;
     FLAGS_stop_logging_if_full_disk = true;
 }
@@ -23,7 +23,7 @@ void initLog(bool isWriteLog, string logDir) {
 
 int main(int argc, char *argv[]) {
     boost::property_tree::ptree m_pt;
-    boost::property_tree::ini_parser::read_ini("config.ini", m_pt);
+    boost::property_tree::ini_parser::read_ini("./config.ini", m_pt);
     string ip = m_pt.get<string>("server.ip", "127.0.0.1");
     int port = m_pt.get<int>("server.port", 6379);
     bool isWriteLog = m_pt.get<bool>("server.isWriteLog", true);
