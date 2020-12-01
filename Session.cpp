@@ -73,7 +73,7 @@ void Session::close() {
 
 Session::~Session() {
     close();
-    LOG(INFO) << "客户端关闭";
+    LOG(INFO) << "Client closed";
 }
 
 void Session::sendUserInfor() {
