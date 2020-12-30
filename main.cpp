@@ -23,17 +23,24 @@ void initLog(bool isWriteLog, string logDir) {
 
 int main(int argc, char *argv[]) {
     boost::property_tree::ptree m_pt;
-    boost::property_tree::ini_parser::read_ini("./config.ini", m_pt);
-    string ip = m_pt.get<string>("server.ip", "127.0.0.1");
-    int port = m_pt.get<int>("server.port", 6379);
-    bool isWriteLog = m_pt.get<bool>("server.isWriteLog", true);
-    string logDir = m_pt.get<string>("server.logDir", "./log");
-    initLog(isWriteLog, logDir);
-    LOG(INFO) << "Server is running on ip:" << ip << " port:" << port << " isWriteLog:" << isWriteLog << " logDir:"
-              << logDir;
-    boost::asio::io_context ioContext;
-    auto server(make_shared<Server>(ioContext, port));
-    server->run();
-    ioContext.run();
+    try {
+        boost::property_tree::ini_parser::read_ini("./config.ini", m_pt);
+        string ip = m_pt.get<string>("server.ip", "127.0.0.1");
+        int port = m_pt.get<int>("server.port", 6379);
+        bool isWriteLog = m_pt.get<bool>("server.isWriteLog", true);
+        string logDir = m_pt.get<string>("server.logDir", "./log");
+        initLog(isWriteLog, logDir);
+        LOG(INFO) << "Server is running on ip:" << ip << " port:" << port << " isWriteLog:" << isWriteLog << " logDir:"
+                  << logDir;
+        boost::asio::io_context ioContext;
+        auto server(make_shared<Server>(ioContext, port));
+        server->run();
+        ioContext.run();
+    }
+    catch (exception &e) {
+        LOG(ERROR) << "config.ini no find" << e.what();
+        system("PAUSE");
+    }
+
     return 0;
 }
